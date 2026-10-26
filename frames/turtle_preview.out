@@ -1,0 +1,114 @@
+00:00.046  color_management | Using OCIO=C:\Program Files\Blender Foundation\Blender 5.2\5.2\datafiles\colormanagement\config.ocio
+00:03.468  blend            | Read blend: "C:\Users\bessu\Desktop\blender-assets\ships\monsters\seaTurtle\seaTurtle.blend"
+00:04.718  cycles           | WARNING HIPEW initialization failed: Error opening HIP dynamic library
+00:05.156  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_00_08_mask.png'
+00:05.375  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_00_08.png'
+frame 9/1152
+00:05.468  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_00_40_mask.png'
+00:05.687  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_00_40.png'
+frame 41/1152
+00:05.750  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_01_08_mask.png'
+00:05.937  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_01_08.png'
+frame 73/1152
+00:06.000  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_01_40_mask.png'
+00:06.187  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_01_40.png'
+frame 105/1152
+00:06.250  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_02_08_mask.png'
+00:06.437  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_02_08.png'
+frame 137/1152
+00:06.515  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_02_40_mask.png'
+00:06.703  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_02_40.png'
+frame 169/1152
+00:06.765  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_03_08_mask.png'
+00:06.953  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_03_08.png'
+frame 201/1152
+00:07.015  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_03_40_mask.png'
+00:07.218  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_03_40.png'
+frame 233/1152
+00:07.281  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_04_08_mask.png'
+00:07.484  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_04_08.png'
+frame 265/1152
+00:07.546  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_04_40_mask.png'
+00:07.750  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_04_40.png'
+frame 297/1152
+00:07.812  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_05_08_mask.png'
+00:08.000  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_05_08.png'
+frame 329/1152
+00:08.078  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_05_40_mask.png'
+00:08.265  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_05_40.png'
+frame 361/1152
+00:08.343  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_06_08_mask.png'
+00:08.546  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_06_08.png'
+frame 393/1152
+00:08.609  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_06_40_mask.png'
+00:08.812  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_06_40.png'
+frame 425/1152
+00:08.890  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_07_08_mask.png'
+00:09.078  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_07_08.png'
+frame 457/1152
+00:09.140  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_07_40_mask.png'
+00:09.343  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_07_40.png'
+frame 489/1152
+00:09.421  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_08_08_mask.png'
+00:09.609  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_08_08.png'
+frame 521/1152
+00:09.687  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_08_40_mask.png'
+00:09.875  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_08_40.png'
+frame 553/1152
+00:09.953  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_09_08_mask.png'
+00:10.140  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_09_08.png'
+frame 585/1152
+00:10.218  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_09_40_mask.png'
+00:10.406  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_09_40.png'
+frame 617/1152
+00:10.468  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_10_08_mask.png'
+00:10.671  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_10_08.png'
+frame 649/1152
+00:10.718  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_10_40_mask.png'
+00:10.921  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_10_40.png'
+frame 681/1152
+00:11.000  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_11_08_mask.png'
+00:11.187  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_11_08.png'
+frame 713/1152
+00:11.265  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_11_40_mask.png'
+00:11.453  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\swim_11_40.png'
+frame 745/1152
+00:11.531  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\bite_00_08_mask.png'
+00:11.734  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\bite_00_08.png'
+frame 777/1152
+00:11.796  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\bite_00_40_mask.png'
+00:11.984  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\bite_00_40.png'
+frame 809/1152
+00:12.046  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\bite_01_08_mask.png'
+00:12.250  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\bite_01_08.png'
+frame 841/1152
+00:12.312  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\bite_01_40_mask.png'
+00:12.546  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\bite_01_40.png'
+frame 873/1152
+00:12.625  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\bite_02_08_mask.png'
+00:12.812  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\bite_02_08.png'
+frame 905/1152
+00:12.875  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\bite_02_40_mask.png'
+00:13.078  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\bite_02_40.png'
+frame 937/1152
+00:13.140  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\bite_03_08_mask.png'
+00:13.343  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\bite_03_08.png'
+frame 969/1152
+00:13.406  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\bite_03_40_mask.png'
+00:13.593  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\bite_03_40.png'
+frame 1001/1152
+00:13.687  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\bite_04_08_mask.png'
+00:13.906  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\bite_04_08.png'
+frame 1033/1152
+00:13.968  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\bite_04_40_mask.png'
+00:14.156  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\bite_04_40.png'
+frame 1065/1152
+00:14.218  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\bite_05_08_mask.png'
+00:14.421  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\bite_05_08.png'
+frame 1097/1152
+00:14.484  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\bite_05_40_mask.png'
+00:14.687  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\intact\bite_05_40.png'
+frame 1129/1152
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

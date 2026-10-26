@@ -1,0 +1,647 @@
+00:00.062  color_management | Using OCIO=C:\Program Files\Blender Foundation\Blender 5.2\5.2\datafiles\colormanagement\config.ocio
+00:03.859  blend            | Read blend: "C:\Users\bessu\Desktop\blender-assets\ships\monsters\seaSerpent\seaSerpent.blend"
+00:04.469  cycles           | WARNING HIPEW initialization failed: Error opening HIP dynamic library
+00:05.531  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_00.png'
+frame 1/320
+00:05.672  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_01.png'
+frame 2/320
+00:05.828  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_02.png'
+frame 3/320
+00:05.984  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_03.png'
+frame 4/320
+00:06.125  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_04.png'
+frame 5/320
+00:06.234  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_05.png'
+frame 6/320
+00:06.344  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_06.png'
+frame 7/320
+00:06.437  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_07.png'
+frame 8/320
+00:06.547  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_08.png'
+frame 9/320
+00:06.656  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_09.png'
+frame 10/320
+00:06.781  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_10.png'
+frame 11/320
+00:06.922  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_11.png'
+frame 12/320
+00:07.047  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_12.png'
+frame 13/320
+00:07.172  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_13.png'
+frame 14/320
+00:07.265  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_14.png'
+frame 15/320
+00:07.390  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_15.png'
+frame 16/320
+00:07.515  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_16.png'
+frame 17/320
+00:07.656  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_17.png'
+frame 18/320
+00:07.765  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_18.png'
+frame 19/320
+00:07.859  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_19.png'
+frame 20/320
+00:07.937  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_20.png'
+frame 21/320
+00:08.078  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_21.png'
+frame 22/320
+00:08.187  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_22.png'
+frame 23/320
+00:08.281  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_23.png'
+frame 24/320
+00:08.375  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_24.png'
+frame 25/320
+00:08.484  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_25.png'
+frame 26/320
+00:08.609  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_26.png'
+frame 27/320
+00:08.734  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_27.png'
+frame 28/320
+00:08.844  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_28.png'
+frame 29/320
+00:08.922  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_29.png'
+frame 30/320
+00:09.031  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_30.png'
+frame 31/320
+00:09.156  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_31.png'
+frame 32/320
+00:09.312  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_32.png'
+frame 33/320
+00:09.453  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_33.png'
+frame 34/320
+00:09.609  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_34.png'
+frame 35/320
+00:09.750  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_35.png'
+frame 36/320
+00:09.890  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_36.png'
+frame 37/320
+00:10.047  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_37.png'
+frame 38/320
+00:10.203  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_38.png'
+frame 39/320
+00:10.328  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_39.png'
+frame 40/320
+00:10.437  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_40.png'
+frame 41/320
+00:10.547  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_41.png'
+frame 42/320
+00:10.672  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_42.png'
+frame 43/320
+00:10.781  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_43.png'
+frame 44/320
+00:10.906  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_44.png'
+frame 45/320
+00:11.000  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_45.png'
+frame 46/320
+00:11.078  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_46.png'
+frame 47/320
+00:11.187  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_47.png'
+frame 48/320
+00:11.281  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_48.png'
+frame 49/320
+00:11.359  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_49.png'
+frame 50/320
+00:11.484  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_50.png'
+frame 51/320
+00:11.609  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_51.png'
+frame 52/320
+00:11.687  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_52.png'
+frame 53/320
+00:11.797  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_53.png'
+frame 54/320
+00:11.906  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_54.png'
+frame 55/320
+00:12.031  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_55.png'
+frame 56/320
+00:12.140  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_56.png'
+frame 57/320
+00:12.250  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_57.png'
+frame 58/320
+00:12.328  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_58.png'
+frame 59/320
+00:12.437  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_59.png'
+frame 60/320
+00:12.562  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_60.png'
+frame 61/320
+00:12.687  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_61.png'
+frame 62/320
+00:12.797  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_62.png'
+frame 63/320
+00:12.875  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\head_00_63.png'
+frame 64/320
+00:12.984  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_00.png'
+frame 65/320
+00:13.109  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_01.png'
+frame 66/320
+00:13.219  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_02.png'
+frame 67/320
+00:13.328  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_03.png'
+frame 68/320
+00:13.422  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_04.png'
+frame 69/320
+00:13.484  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_05.png'
+frame 70/320
+00:13.594  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_06.png'
+frame 71/320
+00:13.656  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_07.png'
+frame 72/320
+00:13.734  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_08.png'
+frame 73/320
+00:13.812  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_09.png'
+frame 74/320
+00:13.906  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_10.png'
+frame 75/320
+00:13.969  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_11.png'
+frame 76/320
+00:14.047  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_12.png'
+frame 77/320
+00:14.156  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_13.png'
+frame 78/320
+00:14.250  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_14.png'
+frame 79/320
+00:14.344  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_15.png'
+frame 80/320
+00:14.453  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_16.png'
+frame 81/320
+00:14.531  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_17.png'
+frame 82/320
+00:14.640  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_18.png'
+frame 83/320
+00:14.703  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_19.png'
+frame 84/320
+00:14.797  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_20.png'
+frame 85/320
+00:14.953  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_21.png'
+frame 86/320
+00:15.015  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_22.png'
+frame 87/320
+00:15.094  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_23.png'
+frame 88/320
+00:15.172  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_24.png'
+frame 89/320
+00:15.250  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_25.png'
+frame 90/320
+00:15.312  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_26.png'
+frame 91/320
+00:15.406  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_27.png'
+frame 92/320
+00:15.500  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_28.png'
+frame 93/320
+00:15.578  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_29.png'
+frame 94/320
+00:15.640  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_30.png'
+frame 95/320
+00:15.734  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_31.png'
+frame 96/320
+00:15.797  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_32.png'
+frame 97/320
+00:15.875  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_33.png'
+frame 98/320
+00:15.969  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_34.png'
+frame 99/320
+00:16.078  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_35.png'
+frame 100/320
+00:16.140  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_36.png'
+frame 101/320
+00:16.234  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_37.png'
+frame 102/320
+00:16.297  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_38.png'
+frame 103/320
+00:16.390  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_39.png'
+frame 104/320
+00:16.453  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_40.png'
+frame 105/320
+00:16.531  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_41.png'
+frame 106/320
+00:16.640  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_42.png'
+frame 107/320
+00:16.719  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_43.png'
+frame 108/320
+00:16.797  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_44.png'
+frame 109/320
+00:16.906  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_45.png'
+frame 110/320
+00:17.000  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_46.png'
+frame 111/320
+00:17.062  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_47.png'
+frame 112/320
+00:17.172  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_48.png'
+frame 113/320
+00:17.234  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_49.png'
+frame 114/320
+00:17.312  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_50.png'
+frame 115/320
+00:17.390  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_51.png'
+frame 116/320
+00:17.484  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_52.png'
+frame 117/320
+00:17.609  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_53.png'
+frame 118/320
+00:17.703  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_54.png'
+frame 119/320
+00:17.797  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_55.png'
+frame 120/320
+00:17.859  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_56.png'
+frame 121/320
+00:17.953  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_57.png'
+frame 122/320
+00:18.047  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_58.png'
+frame 123/320
+00:18.140  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_59.png'
+frame 124/320
+00:18.234  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_60.png'
+frame 125/320
+00:18.297  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_61.png'
+frame 126/320
+00:18.406  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_62.png'
+frame 127/320
+00:18.500  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\segment_00_63.png'
+frame 128/320
+00:18.656  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_00.png'
+frame 129/320
+00:18.812  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_01.png'
+frame 130/320
+00:18.937  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_02.png'
+frame 131/320
+00:19.078  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_03.png'
+frame 132/320
+00:19.203  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_04.png'
+frame 133/320
+00:19.328  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_05.png'
+frame 134/320
+00:19.437  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_06.png'
+frame 135/320
+00:19.515  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_07.png'
+frame 136/320
+00:19.609  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_08.png'
+frame 137/320
+00:19.750  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_09.png'
+frame 138/320
+00:19.890  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_10.png'
+frame 139/320
+00:20.031  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_11.png'
+frame 140/320
+00:20.109  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_12.png'
+frame 141/320
+00:20.203  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_13.png'
+frame 142/320
+00:20.328  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_14.png'
+frame 143/320
+00:20.422  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_15.png'
+frame 144/320
+00:20.515  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_16.png'
+frame 145/320
+00:20.640  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_17.png'
+frame 146/320
+00:20.765  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_18.png'
+frame 147/320
+00:20.906  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_19.png'
+frame 148/320
+00:21.062  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_20.png'
+frame 149/320
+00:21.187  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_21.png'
+frame 150/320
+00:21.265  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_22.png'
+frame 151/320
+00:21.344  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_23.png'
+frame 152/320
+00:21.437  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_24.png'
+frame 153/320
+00:21.547  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_25.png'
+frame 154/320
+00:21.656  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_26.png'
+frame 155/320
+00:21.734  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_27.png'
+frame 156/320
+00:21.828  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_28.png'
+frame 157/320
+00:21.937  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_29.png'
+frame 158/320
+00:22.047  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_30.png'
+frame 159/320
+00:22.140  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_31.png'
+frame 160/320
+00:22.234  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_32.png'
+frame 161/320
+00:22.328  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_33.png'
+frame 162/320
+00:22.437  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_34.png'
+frame 163/320
+00:22.531  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_35.png'
+frame 164/320
+00:22.609  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_36.png'
+frame 165/320
+00:22.703  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_37.png'
+frame 166/320
+00:22.812  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_38.png'
+frame 167/320
+00:22.922  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_39.png'
+frame 168/320
+00:23.015  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_40.png'
+frame 169/320
+00:23.140  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_41.png'
+frame 170/320
+00:23.234  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_42.png'
+frame 171/320
+00:23.328  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_43.png'
+frame 172/320
+00:23.453  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_44.png'
+frame 173/320
+00:23.594  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_45.png'
+frame 174/320
+00:23.734  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_46.png'
+frame 175/320
+00:23.890  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_47.png'
+frame 176/320
+00:24.000  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_48.png'
+frame 177/320
+00:24.094  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_49.png'
+frame 178/320
+00:24.187  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_50.png'
+frame 179/320
+00:24.281  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_51.png'
+frame 180/320
+00:24.375  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_52.png'
+frame 181/320
+00:24.469  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_53.png'
+frame 182/320
+00:24.562  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_54.png'
+frame 183/320
+00:24.687  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_55.png'
+frame 184/320
+00:24.750  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_56.png'
+frame 185/320
+00:24.844  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_57.png'
+frame 186/320
+00:24.953  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_58.png'
+frame 187/320
+00:25.015  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_59.png'
+frame 188/320
+00:25.125  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_60.png'
+frame 189/320
+00:25.265  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_61.png'
+frame 190/320
+00:25.390  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_62.png'
+frame 191/320
+00:25.469  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\fin_00_63.png'
+frame 192/320
+00:25.562  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_00.png'
+frame 193/320
+00:25.640  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_01.png'
+frame 194/320
+00:25.703  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_02.png'
+frame 195/320
+00:25.797  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_03.png'
+frame 196/320
+00:25.875  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_04.png'
+frame 197/320
+00:25.969  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_05.png'
+frame 198/320
+00:26.047  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_06.png'
+frame 199/320
+00:26.140  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_07.png'
+frame 200/320
+00:26.234  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_08.png'
+frame 201/320
+00:26.297  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_09.png'
+frame 202/320
+00:26.390  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_10.png'
+frame 203/320
+00:26.484  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_11.png'
+frame 204/320
+00:26.547  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_12.png'
+frame 205/320
+00:26.640  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_13.png'
+frame 206/320
+00:26.734  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_14.png'
+frame 207/320
+00:26.812  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_15.png'
+frame 208/320
+00:26.906  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_16.png'
+frame 209/320
+00:27.015  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_17.png'
+frame 210/320
+00:27.109  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_18.png'
+frame 211/320
+00:27.187  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_19.png'
+frame 212/320
+00:27.281  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_20.png'
+frame 213/320
+00:27.406  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_21.png'
+frame 214/320
+00:27.500  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_22.png'
+frame 215/320
+00:27.578  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_23.png'
+frame 216/320
+00:27.672  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_24.png'
+frame 217/320
+00:27.781  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_25.png'
+frame 218/320
+00:27.875  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_26.png'
+frame 219/320
+00:27.969  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_27.png'
+frame 220/320
+00:28.062  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_28.png'
+frame 221/320
+00:28.156  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_29.png'
+frame 222/320
+00:28.265  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_30.png'
+frame 223/320
+00:28.344  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_31.png'
+frame 224/320
+00:28.437  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_32.png'
+frame 225/320
+00:28.515  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_33.png'
+frame 226/320
+00:28.609  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_34.png'
+frame 227/320
+00:28.672  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_35.png'
+frame 228/320
+00:28.765  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_36.png'
+frame 229/320
+00:28.859  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_37.png'
+frame 230/320
+00:28.953  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_38.png'
+frame 231/320
+00:29.062  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_39.png'
+frame 232/320
+00:29.140  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_40.png'
+frame 233/320
+00:29.219  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_41.png'
+frame 234/320
+00:29.312  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_42.png'
+frame 235/320
+00:29.406  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_43.png'
+frame 236/320
+00:29.515  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_44.png'
+frame 237/320
+00:29.594  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_45.png'
+frame 238/320
+00:29.656  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_46.png'
+frame 239/320
+00:29.750  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_47.png'
+frame 240/320
+00:29.828  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_48.png'
+frame 241/320
+00:29.937  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_49.png'
+frame 242/320
+00:30.078  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_50.png'
+frame 243/320
+00:30.156  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_51.png'
+frame 244/320
+00:30.219  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_52.png'
+frame 245/320
+00:30.328  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_53.png'
+frame 246/320
+00:30.437  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_54.png'
+frame 247/320
+00:30.547  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_55.png'
+frame 248/320
+00:30.609  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_56.png'
+frame 249/320
+00:30.703  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_57.png'
+frame 250/320
+00:30.765  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_58.png'
+frame 251/320
+00:30.859  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_59.png'
+frame 252/320
+00:30.922  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_60.png'
+frame 253/320
+00:31.000  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_61.png'
+frame 254/320
+00:31.078  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_62.png'
+frame 255/320
+00:31.172  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\harpoon_00_63.png'
+frame 256/320
+00:31.312  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_00.png'
+frame 257/320
+00:31.469  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_01.png'
+frame 258/320
+00:31.578  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_02.png'
+frame 259/320
+00:31.703  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_03.png'
+frame 260/320
+00:31.797  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_04.png'
+frame 261/320
+00:31.875  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_05.png'
+frame 262/320
+00:32.000  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_06.png'
+frame 263/320
+00:32.125  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_07.png'
+frame 264/320
+00:32.234  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_08.png'
+frame 265/320
+00:32.328  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_09.png'
+frame 266/320
+00:32.437  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_10.png'
+frame 267/320
+00:32.531  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_11.png'
+frame 268/320
+00:32.672  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_12.png'
+frame 269/320
+00:32.781  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_13.png'
+frame 270/320
+00:32.859  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_14.png'
+frame 271/320
+00:32.969  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_15.png'
+frame 272/320
+00:33.062  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_16.png'
+frame 273/320
+00:33.172  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_17.png'
+frame 274/320
+00:33.250  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_18.png'
+frame 275/320
+00:33.328  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_19.png'
+frame 276/320
+00:33.437  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_20.png'
+frame 277/320
+00:33.531  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_21.png'
+frame 278/320
+00:33.625  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_22.png'
+frame 279/320
+00:33.719  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_23.png'
+frame 280/320
+00:33.781  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_24.png'
+frame 281/320
+00:33.875  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_25.png'
+frame 282/320
+00:34.047  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_26.png'
+frame 283/320
+00:34.125  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_27.png'
+frame 284/320
+00:34.219  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_28.png'
+frame 285/320
+00:34.328  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_29.png'
+frame 286/320
+00:34.437  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_30.png'
+frame 287/320
+00:34.531  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_31.png'
+frame 288/320
+00:34.625  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_32.png'
+frame 289/320
+00:34.734  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_33.png'
+frame 290/320
+00:34.844  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_34.png'
+frame 291/320
+00:34.953  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_35.png'
+frame 292/320
+00:35.031  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_36.png'
+frame 293/320
+00:35.172  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_37.png'
+frame 294/320
+00:35.297  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_38.png'
+frame 295/320
+00:35.375  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_39.png'
+frame 296/320
+00:35.484  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_40.png'
+frame 297/320
+00:35.578  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_41.png'
+frame 298/320
+00:35.703  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_42.png'
+frame 299/320
+00:35.812  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_43.png'
+frame 300/320
+00:35.906  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_44.png'
+frame 301/320
+00:36.000  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_45.png'
+frame 302/320
+00:36.094  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_46.png'
+frame 303/320
+00:36.203  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_47.png'
+frame 304/320
+00:36.312  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_48.png'
+frame 305/320
+00:36.390  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_49.png'
+frame 306/320
+00:36.515  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_50.png'
+frame 307/320
+00:36.594  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_51.png'
+frame 308/320
+00:36.719  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_52.png'
+frame 309/320
+00:36.844  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_53.png'
+frame 310/320
+00:36.922  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_54.png'
+frame 311/320
+00:37.062  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_55.png'
+frame 312/320
+00:37.203  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_56.png'
+frame 313/320
+00:37.344  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_57.png'
+frame 314/320
+00:37.484  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_58.png'
+frame 315/320
+00:37.562  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_59.png'
+frame 316/320
+00:37.656  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_60.png'
+frame 317/320
+00:37.734  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_61.png'
+frame 318/320
+00:37.812  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_62.png'
+frame 319/320
+00:37.922  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaSerpent\sinking\tail_00_63.png'
+frame 320/320
+atlas 1024 x 212 -> C:\Users\bessu\Desktop\canvas\public\sprites\ships\monsters\seaSerpent
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

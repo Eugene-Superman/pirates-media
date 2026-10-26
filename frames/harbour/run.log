@@ -1,0 +1,38 @@
+00:00.063  color_management | Using OCIO=C:\Program Files\Blender Foundation\Blender 5.2\5.2\datafiles\colormanagement\config.ocio
+00:04.484  blend            | Read blend: "C:\Users\bessu\Desktop\blender-assets\port\port.blend"
+downloaded evening_road_01_puresky_4k.hdr
+C:\Users\bessu\Desktop\blender-assets\port\build_harbour.py:243: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  world.use_nodes = True
+sky's sun at -35 deg, 10.0 deg up
+15:19:06 | INFO: Data are loaded, start creating Blender stuff
+15:19:06 | INFO: Blender create Mesh node x-Boats-Dutch-large-baseA-joined
+15:19:06 | INFO: Blender create Mesh node x-Boats-Dutch-large-sails-closed-joined
+15:19:06 | INFO: Blender create Mesh node Plane.067
+15:19:06 | INFO: glTF import finished in 0.65s
+15:19:06 | INFO: Data are loaded, start creating Blender stuff
+15:19:06 | INFO: Blender create Mesh node x-Boats-Dutch-medium-rigging-joined
+15:19:07 | INFO: Blender create Mesh node x-Boats-Dutch-medium-baseB-joined
+15:19:07 | INFO: Blender create Mesh node Plane.072
+15:19:07 | INFO: glTF import finished in 0.40s
+15:19:07 | INFO: Data are loaded, start creating Blender stuff
+15:19:07 | INFO: Blender create Mesh node x-Boats-Dutch-large-rigging-joined.001
+15:19:07 | INFO: Blender create Mesh node x-Boats-Dutch-large-baseB-joined.001
+15:19:07 | INFO: Blender create Mesh node Plane.038
+15:19:07 | INFO: glTF import finished in 0.54s
+15:19:07 | INFO: Data are loaded, start creating Blender stuff
+15:19:07 | INFO: Blender create Mesh node Plane.041
+15:19:08 | INFO: Blender create Mesh node Cylinder.042
+15:19:08 | INFO: Blender create Mesh node Plane.046
+15:19:08 | INFO: Blender create Mesh node Plane.498
+15:19:08 | INFO: Blender create Mesh node Plane.057
+15:19:08 | INFO: Blender create Mesh node Plane.043
+15:19:08 | INFO: Blender create Mesh node Plane.002
+15:19:08 | INFO: glTF import finished in 0.97s
+00:11.844  cycles           | WARNING HIPEW initialization failed: Error opening HIP dynamic library
+00:21.750  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\harbour\preview.png'
+rendered preview.png in 10 s
+{"tavern": {"at": [0.6068, 0.4937], "hidden": false}, "workshop": {"at": [0.479, 0.4855], "hidden": false}, "market": {"at": [0.5459, 0.5092], "hidden": false}, "shipyard": {"at": [0.9023, 0.5497], "hidden": false}, "arsenal": {"at": [0.6401, 0.6306], "hidden": false}, "guild": {"at": [0.6489, 0.2893], "hidden": false}, "auction": {"at": [0.6272, 0.4884], "hidden": false}}
+HARBOUR DONE in 17 s
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

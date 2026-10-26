@@ -1,0 +1,14 @@
+00:00.062  color_management | Using OCIO=C:\Program Files\Blender Foundation\Blender 5.2\5.2\datafiles\colormanagement\config.ocio
+C:\Users\bessu\Desktop\blender-assets\port\build_port.py:1722: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  world.use_nodes = True
+00:11.844  cycles           | WARNING HIPEW initialization failed: Error opening HIP dynamic library
+C:\Users\bessu\Desktop\blender-assets\port\build_port.py:598: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  mat.use_nodes = True
+built in 11 s: 318 plants
+picture 1012x522
+00:29.734  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\port\preview.png'
+rendered preview.png in 7 s
+PREVIEW DONE
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

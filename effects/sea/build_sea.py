@@ -1,5 +1,5 @@
 """
-Textures for the sea's surface in the game: seamless tiles of ocean waves and caustics, written to
+Textures for the sea's surface in the game: seamless tiles of ocean waves, caustics and broad patches, written to
 canvas/public/sprites/sea/.
 
 Run it in Blender (Scripting -> Open -> Run Script; it needs only the numpy that comes with Blender) or with any Python
@@ -14,6 +14,12 @@ Each wave map stores, per pixel:
   B     "crest": 0.5 is the mean water level, darker towards the troughs, near 1 where crests are sharp enough to
         break (where the surface would fold over: the Jacobian of the displacement falls below zero)
 The game's sea shader (canvas/src/client/scene/effects/seaSurface.ts) reads them like that.
+
+patches.webp is three fields of broad, soft blobs, stretched over thousands of world units by the game:
+  R     depth: darker, deeper water where it is low, lighter, shallower water where it is high
+  G     cloud shadows drifting over the sea with the wind
+  B     gusts: where it is high the wind blows harder, and the sea is rougher, with chop and whitecaps
+Each is spread evenly over 0..1 (as many pixels at every value), so a threshold covers that share of the sea.
 """
 
 import os
@@ -39,6 +45,9 @@ WAVES = {
 }
 CAUSTICS_CELLS = 9  # light network of the caustics: cells across the tile
 CAUSTICS_SEED = 5
+PATCHES_SIZE = 256  # pixels per side: the fields are smooth
+# Per channel: seed, the biggest blobs' size as a share of the tile, the smallest ones'
+PATCHES = {"depth": (61, 0.5, 0.08), "clouds": (73, 0.35, 0.05), "gusts": (89, 0.3, 0.06)}
 
 try:
     _SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -178,6 +187,28 @@ def caustics():
     return np.repeat(light[..., None], 3, axis=-1)
 
 
+def blobs(seed, biggest, smallest):
+    """Soft blobs of every size between `biggest` and `smallest` (shares of the tile), seamless: white noise filtered
+    in the frequency domain, then spread evenly over 0..1"""
+    rng = np.random.default_rng(seed)
+    n = PATCHES_SIZE
+    m = np.fft.fftfreq(n, 1.0 / n)  # whole waves per tile
+    k = np.hypot(*np.meshgrid(m, m))
+    k[0, 0] = 1.0
+    gain = k**-1.5 * np.exp(-((k * smallest) ** 2)) * (1 - np.exp(-((k * biggest) ** 2)))
+    gain[0, 0] = 0
+    field = np.real(np.fft.ifft2(np.fft.fft2(rng.standard_normal((n, n))) * gain))
+    ranks = field.ravel().argsort().argsort()
+    return (ranks / (ranks.size - 1)).reshape(n, n)
+
+
+def patches():
+    depth = blobs(*PATCHES["depth"])
+    clouds = blobs(*PATCHES["clouds"])
+    gusts = blobs(*PATCHES["gusts"])
+    return np.stack([depth, clouds, gusts], axis=-1)
+
+
 def save_webp(path, rgb, quality=92):
     """rgb: float 0..1, row 0 at the top. Pillow if there is one, otherwise Blender's own writer"""
     os.makedirs(os.path.dirname(path), exist_ok=True)
@@ -208,6 +239,7 @@ def main():
         save_webp(os.path.join(OUT_DIR, f"{name}.webp"), ocean(*params))
         print("sea:", name, flush=True)
     save_webp(os.path.join(OUT_DIR, "caustics.webp"), caustics())
+    save_webp(os.path.join(OUT_DIR, "patches.webp"), patches())
     print("sea textures ->", OUT_DIR, flush=True)
 
 

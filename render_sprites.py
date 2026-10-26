@@ -5,10 +5,17 @@ Run: open a ship's .blend (ships/<line>/<ship>/), Scripting tab -> Open -> rende
 From a terminal: blender ships/starter/sloop/sloop.blend --background --python render_sprites.py
 To render every damage stage of the ship, run render_stages.py instead.
 
-Where things go is worked out from where the .blend lies, so a new ship needs no settings:
+Where things go is worked out from where the .blend lies, so a new ship needs no settings (and the floating loot,
+loot/chest/chest.blend, renders the same way into canvas/public/sprites/loot/chest/<look>/intact):
   ships/starter/sloop/sloop.blend, damage stage "minor" (the scene's custom property "damage" = 1)
   -> atlas  ../canvas/public/sprites/ships/starter/sloop/minor.webp + minor.json
   -> frames frames/starter/sloop/minor/ (untrimmed, kept for inspection)
+A ship with several looks (its build.py has VARIANTS; the scene's property "variant" names the one built) gets a
+folder per look: ships/bots/fishingBoat/fishingBoat.blend, "nets", "minor"
+  -> atlas  ../canvas/public/sprites/ships/bots/fishingBoat/nets/minor.webp + minor.json
+An animated ship (ANIMATIONS set, by render_stages.py from its build.py) gets every frame of each animation from every
+direction in one atlas: frame "<animation>_<k>_<direction>", listed per animation k-major (all directions of frame 0,
+then of frame 1...), and meta.ship.animations gives each one's frame count, speed and whether it loops.
 
 Camera, light and scale are taken from the game:
   src/client/scene/SceneView.ts, CAMERA: pitch 30, yaw 45, no perspective, zoom 1.4
@@ -47,35 +54,54 @@ def base_dir():
     return os.environ.get("SHIP_OUT") or os.getcwd()
 
 
-def assets_root(ship_dir):
-    """blender-assets itself: the parent of the "ships" folder this ship lives in"""
+# The folders of blender-assets whose models are rendered here, each into the game's public/sprites/<folder>/
+ROOTS = ("ships", "loot")
+
+
+def find_root(ship_dir):
+    """blender-assets itself and the folder of ROOTS this model lives in"""
     path = os.path.abspath(ship_dir)
-    while os.path.basename(path) != "ships":
+    while os.path.basename(path) not in ROOTS:
         parent = os.path.dirname(path)
         if parent == path:
-            raise RuntimeError(f"{ship_dir} is not inside blender-assets/ships/<line>/<ship>/")
+            raise RuntimeError(f"{ship_dir} is not inside blender-assets/ships/<line>/<ship>/ (or loot/<thing>/)")
         path = parent
-    return os.path.dirname(path)
+    return os.path.dirname(path), os.path.basename(path)
+
+
+def assets_root(ship_dir):
+    """blender-assets itself: the parent of the "ships" (or "loot") folder this model lives in"""
+    return find_root(ship_dir)[0]
 
 
 SHIP_DIR = base_dir()
-ASSETS_DIR = assets_root(SHIP_DIR)
-SHIP_PATH = os.path.relpath(SHIP_DIR, os.path.join(ASSETS_DIR, "ships"))  # e.g. starter/sloop
-ATLAS_DIR = os.environ.get("SHIP_ATLAS_DIR") or os.path.normpath(
-    os.path.join(ASSETS_DIR, "..", GAME_DIR, "public", "sprites", "ships", SHIP_PATH)
+ASSETS_DIR, ROOT = find_root(SHIP_DIR)
+SHIP_PATH = os.path.relpath(SHIP_DIR, os.path.join(ASSETS_DIR, ROOT))  # e.g. starter/sloop
+# Frames of ships go to frames/<line>/<ship>/, of the rest to frames/<root>/...
+FRAMES_PATH = SHIP_PATH if ROOT == "ships" else os.path.join(ROOT, SHIP_PATH)
+ATLAS_BASE = os.environ.get("SHIP_ATLAS_DIR") or os.path.normpath(
+    os.path.join(ASSETS_DIR, "..", GAME_DIR, "public", "sprites", ROOT, SHIP_PATH)
 )
+ATLAS_DIR = ATLAS_BASE
 NAME = ""
 FRAMES_DIR = ""
+# The ship's animations: {name: {start, frames, fps, loop, step}}, frames of the scene's timeline; None for a still ship
+ANIMATIONS = None
+# Whether the ship's shadow on the water is in its frames. A ship laid out by the game from parts (the sea serpent)
+# has none, and nothing of it is cut off at the water
+SHADOW = True
 
 
-def set_stage(index):
-    """Which damage stage is rendered: picks the atlas name and the frames folder"""
-    global NAME, FRAMES_DIR
+def set_stage(index, variant=None):
+    """Which damage stage (and look, for a ship with several) is rendered: picks the atlas name and folders"""
+    global NAME, FRAMES_DIR, ATLAS_DIR
     NAME = STAGE_NAMES[index]
-    FRAMES_DIR = os.path.join(ASSETS_DIR, "frames", SHIP_PATH, NAME)
+    look = [variant] if variant else []
+    FRAMES_DIR = os.path.join(ASSETS_DIR, "frames", FRAMES_PATH, *look, NAME)
+    ATLAS_DIR = os.path.join(ATLAS_BASE, *look)
 
 
-set_stage(int(bpy.context.scene.get("damage", 0)))
+set_stage(int(bpy.context.scene.get("damage", 0)), bpy.context.scene.get("variant"))
 
 
 # ---------------------------------------------------------------------------
@@ -121,14 +147,38 @@ def ship_points():
     return np.concatenate(pts)
 
 
+def frame_jobs():
+    """Every frame of the atlas: (name, direction, the timeline's frame to pose it at, or None)"""
+    if not ANIMATIONS:
+        return [(f"ship_{i:02d}", i, None) for i in range(DIRECTIONS)]
+    jobs = []
+    for anim, spec in ANIMATIONS.items():
+        for k in range(spec["frames"]):
+            frame = spec["start"] + k * spec.get("step", 1)
+            jobs += [(f"{anim}_{k:02d}_{i:02d}", i, frame) for i in range(DIRECTIONS)]
+    return jobs
+
+
+def pose_frames():
+    """The timeline's frames the atlas shows the ship at: [None] for a still one"""
+    return sorted({frame for _, _, frame in frame_jobs() if frame is not None}) or [None]
+
+
 def frame_bounds():
-    """Screen bounds (in world units) over all directions, shadow included"""
+    """Screen bounds (in world units) over all directions and poses, shadow included"""
     right, up, _ = camera_axes()
     L = light_dir()
-    pts = ship_points()
-    above = pts[pts[:, 2] > 0]
-    shadow = above - np.outer(above[:, 2] / L.z, np.array(L))
-    pts = np.concatenate([pts[pts[:, 2] > -0.5], shadow])
+    scene = bpy.context.scene
+    poses = []
+    for frame in pose_frames():
+        if frame is not None:
+            scene.frame_set(frame)
+        poses.append(ship_points())
+    pts = np.concatenate(poses)
+    if SHADOW:
+        above = pts[pts[:, 2] > 0]
+        shadow = above - np.outer(above[:, 2] / L.z, np.array(L))
+        pts = np.concatenate([pts[pts[:, 2] > -0.5], shadow])
     lo = np.array([np.inf, np.inf])
     hi = -lo
     for i in range(DIRECTIONS):
@@ -248,19 +298,23 @@ def _has_gpu():
 
 
 def frame_path(i):
-    return os.path.join(FRAMES_DIR, f"ship_{i:02d}.png")
+    """The i-th frame of frame_jobs()"""
+    return os.path.join(FRAMES_DIR, frame_jobs()[i][0] + ".png")
 
 
 def render_frames(only=None):
     os.makedirs(FRAMES_DIR, exist_ok=True)
     scene = bpy.context.scene
     root = ship_root()
-    for i in range(DIRECTIONS):
+    jobs = frame_jobs()
+    for i, (_, direction, frame) in enumerate(jobs):
         if only is not None and i not in only:
             continue
-        # Frame i = the ship turned in the game by i * 360 / N.
+        if frame is not None and scene.frame_current != frame:
+            scene.frame_set(frame)
+        # Direction d = the ship turned in the game by d * 360 / N.
         # In the game y points south, so in Blender the angle is negated.
-        root.rotation_euler = (0, 0, -2 * math.pi * i / DIRECTIONS)
+        root.rotation_euler = (0, 0, -2 * math.pi * direction / DIRECTIONS)
         render_one(i)
 
         # With persistent data Cycles sometimes loses an image texture partway through a run and keeps
@@ -274,22 +328,35 @@ def render_frames(only=None):
             scene.render.use_persistent_data = False
             render_one(i)
             scene.render.use_persistent_data = persistent
-        print(f"frame {i + 1}/{DIRECTIONS}", flush=True)
+        if FRAMES_DIR not in _dark_baseline:
+            _dark_baseline[FRAMES_DIR] = dark_share(frame_path(i))
+        print(f"frame {i + 1}/{len(jobs)}", flush=True)
     root.rotation_euler = (0, 0, 0)
 
 
 def render_one(i):
     scene = bpy.context.scene
     water = bpy.data.objects["ShadowCatcher"]
+    if not SHADOW:
+        water.hide_render = True
+        scene.cycles.samples = SAMPLES
+        scene.cycles.use_denoising = True
+        scene.render.filepath = frame_path(i)
+        bpy.ops.render.render(write_still=True)
+        water.hide_render = False
+        return
     # First the ship alone (no shadow), then together with the shadow.
-    # The two renders are combined into a frame where the shadow can be made lighter.
-    water.hide_render = True
+    # The two renders are combined into a frame where the shadow can be made lighter. In the first the water is a
+    # holdout, so what is under it (a flipper's stroke, a wreck's sunk side) is cut out of both, not left black
+    water.is_shadow_catcher = False
+    water.is_holdout = True
     scene.cycles.samples = 16
     scene.cycles.use_denoising = False
     scene.render.filepath = frame_path(i).replace(".png", "_mask.png")
     bpy.ops.render.render(write_still=True)
 
-    water.hide_render = False
+    water.is_holdout = False
+    water.is_shadow_catcher = True
     scene.cycles.samples = SAMPLES
     scene.cycles.use_denoising = True
     scene.render.filepath = frame_path(i)
@@ -299,15 +366,23 @@ def render_one(i):
 
 
 BROKEN_DARK_SHARE = 0.04  # a sound frame has well under 1% near-black pixels, one with a black texture 10-20%
+BROKEN_JUMP = 2.0  # a ship dark all over (soot, char, tar) is broken only when a frame is this much darker than usual
+_dark_baseline = {}  # frames folder -> near-black share of its first frame, once fresh renders confirmed it
 
 
-def frame_looks_broken(path):
+def dark_share(path):
     rgba = load_rgba(path)
     solid = rgba[..., 3] > 0.98
     if not solid.any():
-        return False
-    dark = rgba[..., :3].mean(axis=2)[solid] < 0.1
-    return float(dark.mean()) > BROKEN_DARK_SHARE
+        return 0.0
+    return float((rgba[..., :3].mean(axis=2)[solid] < 0.1).mean())
+
+
+def frame_looks_broken(path):
+    """Much darker than a sound frame. A dark ship sets its own bar: its first frame's darkness, which still counts
+    after two fresh renders gave the same"""
+    limit = max(BROKEN_DARK_SHARE, _dark_baseline.get(os.path.dirname(path), 0.0) * BROKEN_JUMP)
+    return dark_share(path) > limit
 
 
 try:
@@ -418,7 +493,8 @@ def pack(sizes, width):
 
 
 def build_atlas(info):
-    frames = [load_rgba(frame_path(i)) for i in range(DIRECTIONS)]
+    jobs = frame_jobs()
+    frames = [load_rgba(frame_path(i)) for i in range(len(jobs))]
     boxes = [trim(f) for f in frames]
     sizes = [(x1 - x0, y1 - y0) for x0, y0, x1, y1 in boxes]
 
@@ -432,13 +508,12 @@ def build_atlas(info):
     width, height, pos = best
 
     atlas = np.zeros((height, width, 4), dtype=np.float32)
-    data = {"frames": {}, "animations": {"ship": []}}
+    data = {"frames": {}, "animations": {}}
     W, H = info["width"], info["height"]
     ax, ay = info["anchor"]
-    for i, (f, (x0, y0, x1, y1), (px, py)) in enumerate(zip(frames, boxes, pos)):
+    for (name, _, _), f, (x0, y0, x1, y1), (px, py) in zip(jobs, frames, boxes, pos):
         w, h = x1 - x0, y1 - y0
         atlas[py : py + h, px : px + w] = f[y0:y1, x0:x1]
-        name = f"ship_{i:02d}"
         data["frames"][name] = {
             "frame": {"x": px, "y": py, "w": w, "h": h},
             "rotated": False,
@@ -447,7 +522,7 @@ def build_atlas(info):
             "sourceSize": {"w": W, "h": H},
             "anchor": {"x": round(ax / W, 5), "y": round(ay / H, 5)},
         }
-        data["animations"]["ship"].append(name)
+        data["animations"].setdefault(name.rsplit("_", 2)[0] if ANIMATIONS else "ship", []).append(name)
 
     os.makedirs(ATLAS_DIR, exist_ok=True)
     image_name = NAME + ".webp"
@@ -465,6 +540,10 @@ def build_atlas(info):
             "yaw": CAM_YAW,
         },
     }
+    if ANIMATIONS:
+        data["meta"]["ship"]["animations"] = {
+            anim: {"frames": spec["frames"], "fps": spec["fps"], "loop": spec["loop"]} for anim, spec in ANIMATIONS.items()
+        }
     with open(os.path.join(ATLAS_DIR, NAME + ".json"), "w") as fh:
         json.dump(data, fh, indent=1)
     print("atlas", width, "x", height, "->", ATLAS_DIR)

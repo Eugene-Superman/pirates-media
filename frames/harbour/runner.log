@@ -1,0 +1,59 @@
+RUN {'HARBOUR_PREVIEW': '1', 'HARBOUR_ONLY': 'picture', 'HARBOUR_NAME': 'unlit_floor'}
+00:00.062  color_management | Using OCIO=C:\Program Files\Blender Foundation\Blender 5.2\5.2\datafiles\colormanagement\config.ocio
+00:03.953  blend            | Read blend: "C:\Users\bessu\Desktop\blender-assets\port\port.blend"
+C:\Users\bessu\Desktop\blender-assets\port\build_harbour.py:253: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  world.use_nodes = True
+sky's sun at -35 deg, 10.0 deg up
+22:44:59 | INFO: Data are loaded, start creating Blender stuff
+22:44:59 | INFO: Blender create Mesh node x-Boats-Dutch-large-rigging-joined.001
+22:44:59 | INFO: Blender create Mesh node x-Boats-Dutch-large-baseB-joined.001
+22:45:00 | INFO: Blender create Mesh node Plane.038
+22:45:00 | INFO: glTF import finished in 0.48s
+22:45:00 | INFO: Data are loaded, start creating Blender stuff
+22:45:00 | INFO: Blender create Mesh node x-Boats-Dutch-large-baseA-joined
+22:45:00 | INFO: Blender create Mesh node x-Boats-Dutch-large-sails-closed-joined
+22:45:00 | INFO: Blender create Mesh node Plane.067
+22:45:00 | INFO: glTF import finished in 0.54s
+22:45:00 | INFO: Data are loaded, start creating Blender stuff
+22:45:00 | INFO: Blender create Mesh node x-Boats-Dutch-medium-rigging-joined
+22:45:00 | INFO: Blender create Mesh node x-Boats-Dutch-medium-baseB-joined
+22:45:01 | INFO: Blender create Mesh node Plane.072
+22:45:01 | INFO: glTF import finished in 0.35s
+00:06.359  cycles           | WARNING HIPEW initialization failed: Error opening HIP dynamic library
+00:15.187  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\harbour\unlit_floor.png'
+rendered unlit_floor.png in 8 s
+{"tavern": {"at": [0.5714, 0.5063], "hidden": false}, "workshop": {"at": [0.4023, 0.4983], "hidden": false}, "market": {"at": [0.4882, 0.5237], "hidden": false}, "shipyard": {"at": [0.9499, 0.5768], "hidden": false}, "arsenal": {"at": [0.8287, 0.8757], "hidden": false}, "guild": {"at": [0.5661, 0.2266], "hidden": false}, "auction": {"at": [0.2432, 0.4926], "hidden": false}}
+HARBOUR DONE in 11 s
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit
+RUN {'HARBOUR_ONLY': 'picture'}
+00:00.063  color_management | Using OCIO=C:\Program Files\Blender Foundation\Blender 5.2\5.2\datafiles\colormanagement\config.ocio
+00:03.813  blend            | Read blend: "C:\Users\bessu\Desktop\blender-assets\port\port.blend"
+C:\Users\bessu\Desktop\blender-assets\port\build_harbour.py:253: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  world.use_nodes = True
+sky's sun at -35 deg, 10.0 deg up
+22:45:15 | INFO: Data are loaded, start creating Blender stuff
+22:45:15 | INFO: Blender create Mesh node x-Boats-Dutch-large-rigging-joined.001
+22:45:15 | INFO: Blender create Mesh node x-Boats-Dutch-large-baseB-joined.001
+22:45:15 | INFO: Blender create Mesh node Plane.038
+22:45:15 | INFO: glTF import finished in 0.50s
+22:45:15 | INFO: Data are loaded, start creating Blender stuff
+22:45:15 | INFO: Blender create Mesh node x-Boats-Dutch-large-baseA-joined
+22:45:16 | INFO: Blender create Mesh node x-Boats-Dutch-large-sails-closed-joined
+22:45:16 | INFO: Blender create Mesh node Plane.067
+22:45:16 | INFO: glTF import finished in 0.59s
+22:45:16 | INFO: Data are loaded, start creating Blender stuff
+22:45:16 | INFO: Blender create Mesh node x-Boats-Dutch-medium-rigging-joined
+22:45:16 | INFO: Blender create Mesh node x-Boats-Dutch-medium-baseB-joined
+22:45:16 | INFO: Blender create Mesh node Plane.072
+22:45:17 | INFO: glTF import finished in 0.41s
+00:06.344  cycles           | WARNING HIPEW initialization failed: Error opening HIP dynamic library
+01:57.703  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\harbour\harbour.png'
+rendered harbour.png in 111 s
+{"tavern": {"at": [0.5714, 0.5063], "hidden": false}, "workshop": {"at": [0.4023, 0.4983], "hidden": false}, "market": {"at": [0.4882, 0.5237], "hidden": false}, "shipyard": {"at": [0.9499, 0.5768], "hidden": false}, "arsenal": {"at": [0.8287, 0.8757], "hidden": false}, "guild": {"at": [0.5661, 0.2266], "hidden": false}, "auction": {"at": [0.2432, 0.4926], "hidden": false}}
+HARBOUR DONE in 115 s
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit
+ALL RUNS DONE

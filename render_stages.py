@@ -8,7 +8,12 @@ Blender stays usable between frames; progress is printed to the system console.
 The ship's folder must have a build.py with build(stage) and DAMAGE_STAGES (see ships/starter/sloop/build.py);
 a ship without damage stages gets the intact atlas only. Atlases go where render_sprites.py puts them:
 canvas/public/sprites/ships/<line>/<ship>/intact, minor, heavy, burning, sinking (.webp + .json).
-At the end the intact ship is rebuilt and the file is saved.
+A ship with several looks (VARIANT_NAMES in its build.py, build(stage, variant)) gets every stage of every look, each
+look in a folder of its own: canvas/public/sprites/ships/<line>/<ship>/<look>/intact, ...
+The environment variables SHIP_STAGES ("0,4") and SHIP_VARIANTS ("nets") render only some of them.
+An animated ship (animations(stage) or ANIMATIONS in its build.py, see ships/monsters/seaTurtle/build.py) gets every
+frame of its animations from every direction in each stage's atlas.
+At the end the first look's intact ship is rebuilt and the file is saved.
 """
 
 import importlib
@@ -24,12 +29,12 @@ SHIP_DIR = os.path.dirname(bpy.data.filepath)
 
 
 def assets_root(ship_dir):
-    """blender-assets itself: the parent of the "ships" folder this ship lives in"""
+    """blender-assets itself: the parent of the "ships" (or "loot") folder this model lives in"""
     path = os.path.abspath(ship_dir)
-    while os.path.basename(path) != "ships":
+    while os.path.basename(path) not in ("ships", "loot"):
         parent = os.path.dirname(path)
         if parent == path:
-            raise RuntimeError(f"{ship_dir} is not inside blender-assets/ships/<line>/<ship>/")
+            raise RuntimeError(f"{ship_dir} is not inside blender-assets/ships/<line>/<ship>/ (or loot/<thing>/)")
         path = parent
     return os.path.dirname(path)
 
@@ -48,8 +53,12 @@ _spec = importlib.util.spec_from_file_location("ship_build", os.path.join(SHIP_D
 ship_build = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(ship_build)
 
+rs.SHADOW = getattr(ship_build, "SHADOW", True)
 STAGE_COUNT = len(getattr(ship_build, "DAMAGE_STAGES", [None]))
 STAGES = [int(s) for s in os.environ.get("SHIP_STAGES", ",".join(map(str, range(STAGE_COUNT)))).split(",")]
+ALL_VARIANTS = list(getattr(ship_build, "VARIANT_NAMES", ()))
+VARIANTS = os.environ["SHIP_VARIANTS"].split(",") if ALL_VARIANTS and os.environ.get("SHIP_VARIANTS") else ALL_VARIANTS
+JOBS = [(variant, stage) for variant in VARIANTS or [None] for stage in STAGES]
 
 # The viewport shares the GPU with the render, so it shows plain Solid shading meanwhile
 shading = {}
@@ -67,23 +76,32 @@ def restore_shading():
                 area.spaces.active.shading.type = shading[area.as_pointer()]
 
 
-def build(stage):
-    if STAGE_COUNT > 1:
+def build(stage, variant):
+    if variant:
+        ship_build.build(stage, variant)
+    elif STAGE_COUNT > 1:
         ship_build.build(stage)
     else:
         ship_build.build()
 
 
 # Progress is kept where other scripts (and the MCP bridge) can read it
-state = {"stage_list": STAGES, "stage_pos": 0, "frame": 0, "done": False, "error": None, "started": time.time(), "log": []}
+state = {"jobs": JOBS, "job_pos": 0, "frame": 0, "done": False, "error": None, "started": time.time(), "log": []}
 bpy.app.driver_namespace["ship_stages_state"] = state
 info = {}
 
 
+def animations(stage):
+    if hasattr(ship_build, "animations"):
+        return ship_build.animations(stage)
+    return getattr(ship_build, "ANIMATIONS", None)
+
+
 def start_stage():
-    stage = STAGES[state["stage_pos"]]
-    build(stage)
-    rs.set_stage(stage)
+    variant, stage = JOBS[state["job_pos"]]
+    build(stage, variant)
+    rs.set_stage(stage, variant)
+    rs.ANIMATIONS = animations(stage)
     info.clear()
     info.update(rs.setup_scene())
     state["frame"] = 0
@@ -94,22 +112,26 @@ def step():
         with bpy.context.temp_override(window=bpy.context.window_manager.windows[0]):
             if state["frame"] == 0 and not info:
                 start_stage()
-            if state["frame"] < rs.DIRECTIONS:
+            if state["frame"] < len(rs.frame_jobs()):
                 rs.render_frames(only=[state["frame"]])
                 state["frame"] += 1
                 return 0.05
             rs.build_atlas(info)
-            broken = [i for i in range(rs.DIRECTIONS) if rs.frame_looks_broken(rs.frame_path(i))]
-            state["log"].append({"atlas": rs.NAME, "broken": broken, "t": round(time.time() - state["started"], 1)})
-            print(f"{rs.NAME}: done, broken frames: {broken}", flush=True)
-            state["stage_pos"] += 1
+            broken = [i for i in range(len(rs.frame_jobs())) if rs.frame_looks_broken(rs.frame_path(i))]
+            variant = JOBS[state["job_pos"]][0]
+            atlas = f"{variant}/{rs.NAME}" if variant else rs.NAME
+            state["log"].append({"atlas": atlas, "broken": broken, "t": round(time.time() - state["started"], 1)})
+            print(f"{atlas}: done, broken frames: {broken}", flush=True)
+            state["job_pos"] += 1
             info.clear()
-            if state["stage_pos"] < len(STAGES):
+            if state["job_pos"] < len(JOBS):
                 start_stage()
                 return 0.05
             # Leave the file with the intact ship
-            build(0)
-            rs.set_stage(0)
+            first = VARIANTS[0] if VARIANTS else None
+            build(0, first)
+            rs.set_stage(0, first)
+            rs.ANIMATIONS = animations(0)
             rs.setup_scene()
             bpy.ops.wm.save_mainfile()
             state["done"] = True

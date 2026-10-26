@@ -1,0 +1,585 @@
+00:00.047  color_management | Using OCIO=C:\Program Files\Blender Foundation\Blender 5.2\5.2\datafiles\colormanagement\config.ocio
+00:03.344  blend            | Read blend: "C:\Users\bessu\Desktop\blender-assets\loot\chest\chest.blend"
+00:04.031  cycles           | WARNING HIPEW initialization failed: Error opening HIP dynamic library
+00:04.625  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_00_mask.png'
+00:04.844  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_00.png'
+frame 1/64
+00:04.922  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_01_mask.png'
+00:05.156  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_01.png'
+frame 2/64
+00:05.234  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_02_mask.png'
+00:05.422  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_02.png'
+frame 3/64
+00:05.500  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_03_mask.png'
+00:05.703  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_03.png'
+frame 4/64
+00:05.781  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_04_mask.png'
+00:05.969  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_04.png'
+frame 5/64
+00:06.047  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_05_mask.png'
+00:06.250  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_05.png'
+frame 6/64
+00:06.328  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_06_mask.png'
+00:06.531  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_06.png'
+frame 7/64
+00:06.609  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_07_mask.png'
+00:06.813  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_07.png'
+frame 8/64
+00:06.875  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_08_mask.png'
+00:07.094  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_08.png'
+frame 9/64
+00:07.172  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_09_mask.png'
+00:07.391  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_09.png'
+frame 10/64
+00:07.469  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_10_mask.png'
+00:07.672  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_10.png'
+frame 11/64
+00:07.750  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_11_mask.png'
+00:07.953  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_11.png'
+frame 12/64
+00:08.031  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_12_mask.png'
+00:08.219  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_12.png'
+frame 13/64
+00:08.297  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_13_mask.png'
+00:08.516  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_13.png'
+frame 14/64
+00:08.578  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_14_mask.png'
+00:08.766  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_14.png'
+frame 15/64
+00:08.844  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_15_mask.png'
+00:09.031  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_15.png'
+frame 16/64
+00:09.094  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_16_mask.png'
+00:09.297  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_16.png'
+frame 17/64
+00:09.375  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_17_mask.png'
+00:09.563  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_17.png'
+frame 18/64
+00:09.641  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_18_mask.png'
+00:09.844  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_18.png'
+frame 19/64
+00:09.922  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_19_mask.png'
+00:10.125  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_19.png'
+frame 20/64
+00:10.188  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_20_mask.png'
+00:10.375  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_20.png'
+frame 21/64
+00:10.453  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_21_mask.png'
+00:10.625  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_21.png'
+frame 22/64
+00:10.703  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_22_mask.png'
+00:10.891  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_22.png'
+frame 23/64
+00:11.000  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_23_mask.png'
+00:11.188  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_23.png'
+frame 24/64
+00:11.250  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_24_mask.png'
+00:11.438  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_24.png'
+frame 25/64
+00:11.500  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_25_mask.png'
+00:11.703  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_25.png'
+frame 26/64
+00:11.766  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_26_mask.png'
+00:11.969  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_26.png'
+frame 27/64
+00:12.047  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_27_mask.png'
+00:12.219  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_27.png'
+frame 28/64
+00:12.313  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_28_mask.png'
+00:12.500  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_28.png'
+frame 29/64
+00:12.578  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_29_mask.png'
+00:12.766  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_29.png'
+frame 30/64
+00:12.828  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_30_mask.png'
+00:13.016  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_30.png'
+frame 31/64
+00:13.078  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_31_mask.png'
+00:13.266  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_31.png'
+frame 32/64
+00:13.328  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_32_mask.png'
+00:13.516  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_32.png'
+frame 33/64
+00:13.625  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_33_mask.png'
+00:13.813  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_33.png'
+frame 34/64
+00:13.875  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_34_mask.png'
+00:14.063  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_34.png'
+frame 35/64
+00:14.141  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_35_mask.png'
+00:14.313  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_35.png'
+frame 36/64
+00:14.391  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_36_mask.png'
+00:14.609  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_36.png'
+frame 37/64
+00:14.688  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_37_mask.png'
+00:14.906  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_37.png'
+frame 38/64
+00:14.984  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_38_mask.png'
+00:15.188  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_38.png'
+frame 39/64
+00:15.250  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_39_mask.png'
+00:15.438  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_39.png'
+frame 40/64
+00:15.516  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_40_mask.png'
+00:15.719  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_40.png'
+frame 41/64
+00:15.781  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_41_mask.png'
+00:15.984  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_41.png'
+frame 42/64
+00:16.063  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_42_mask.png'
+00:16.250  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_42.png'
+frame 43/64
+00:16.313  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_43_mask.png'
+00:16.516  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_43.png'
+frame 44/64
+00:16.578  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_44_mask.png'
+00:16.766  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_44.png'
+frame 45/64
+00:16.828  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_45_mask.png'
+00:17.016  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_45.png'
+frame 46/64
+00:17.094  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_46_mask.png'
+00:17.266  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_46.png'
+frame 47/64
+00:17.344  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_47_mask.png'
+00:17.516  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_47.png'
+frame 48/64
+00:17.594  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_48_mask.png'
+00:17.781  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_48.png'
+frame 49/64
+00:17.859  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_49_mask.png'
+00:18.047  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_49.png'
+frame 50/64
+00:18.109  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_50_mask.png'
+00:18.297  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_50.png'
+frame 51/64
+00:18.375  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_51_mask.png'
+00:18.563  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_51.png'
+frame 52/64
+00:18.625  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_52_mask.png'
+00:18.828  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_52.png'
+frame 53/64
+00:18.891  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_53_mask.png'
+00:19.125  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_53.png'
+frame 54/64
+00:19.188  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_54_mask.png'
+00:19.391  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_54.png'
+frame 55/64
+00:19.469  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_55_mask.png'
+00:19.656  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_55.png'
+frame 56/64
+00:19.734  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_56_mask.png'
+00:19.953  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_56.png'
+frame 57/64
+00:20.031  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_57_mask.png'
+00:20.219  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_57.png'
+frame 58/64
+00:20.281  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_58_mask.png'
+00:20.484  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_58.png'
+frame 59/64
+00:20.563  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_59_mask.png'
+00:20.766  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_59.png'
+frame 60/64
+00:20.828  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_60_mask.png'
+00:21.016  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_60.png'
+frame 61/64
+00:21.094  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_61_mask.png'
+00:21.281  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_61.png'
+frame 62/64
+00:21.359  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_62_mask.png'
+00:21.531  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_62.png'
+frame 63/64
+00:21.609  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_63_mask.png'
+00:21.797  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\gold\intact\ship_63.png'
+frame 64/64
+00:22.484  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_00_mask.png'
+00:22.609  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_00.png'
+atlas 1024 x 116 -> C:\Users\bessu\Desktop\canvas\public\sprites\loot\chest\gold
+frame 1/64
+00:22.688  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_01_mask.png'
+00:22.828  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_01.png'
+frame 2/64
+00:22.891  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_02_mask.png'
+00:23.016  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_02.png'
+frame 3/64
+00:23.078  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_03_mask.png'
+00:23.203  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_03.png'
+frame 4/64
+00:23.266  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_04_mask.png'
+00:23.391  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_04.png'
+frame 5/64
+00:23.453  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_05_mask.png'
+00:23.578  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_05.png'
+frame 6/64
+00:23.641  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_06_mask.png'
+00:23.766  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_06.png'
+frame 7/64
+00:23.828  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_07_mask.png'
+00:23.953  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_07.png'
+frame 8/64
+00:24.000  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_08_mask.png'
+00:24.125  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_08.png'
+frame 9/64
+00:24.188  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_09_mask.png'
+00:24.297  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_09.png'
+frame 10/64
+00:24.359  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_10_mask.png'
+00:24.484  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_10.png'
+frame 11/64
+00:24.578  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_11_mask.png'
+00:24.703  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_11.png'
+frame 12/64
+00:24.766  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_12_mask.png'
+00:24.891  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_12.png'
+frame 13/64
+00:24.953  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_13_mask.png'
+00:25.063  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_13.png'
+frame 14/64
+00:25.125  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_14_mask.png'
+00:25.250  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_14.png'
+frame 15/64
+00:25.297  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_15_mask.png'
+00:25.438  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_15.png'
+frame 16/64
+00:25.484  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_16_mask.png'
+00:25.609  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_16.png'
+frame 17/64
+00:25.672  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_17_mask.png'
+00:25.797  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_17.png'
+frame 18/64
+00:25.859  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_18_mask.png'
+00:25.984  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_18.png'
+frame 19/64
+00:26.031  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_19_mask.png'
+00:26.172  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_19.png'
+frame 20/64
+00:26.234  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_20_mask.png'
+00:26.359  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_20.png'
+frame 21/64
+00:26.422  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_21_mask.png'
+00:26.547  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_21.png'
+frame 22/64
+00:26.609  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_22_mask.png'
+00:26.734  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_22.png'
+frame 23/64
+00:26.797  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_23_mask.png'
+00:26.922  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_23.png'
+frame 24/64
+00:26.969  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_24_mask.png'
+00:27.109  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_24.png'
+frame 25/64
+00:27.156  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_25_mask.png'
+00:27.313  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_25.png'
+frame 26/64
+00:27.359  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_26_mask.png'
+00:27.484  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_26.png'
+frame 27/64
+00:27.547  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_27_mask.png'
+00:27.656  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_27.png'
+frame 28/64
+00:27.719  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_28_mask.png'
+00:27.844  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_28.png'
+frame 29/64
+00:27.891  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_29_mask.png'
+00:28.031  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_29.png'
+frame 30/64
+00:28.094  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_30_mask.png'
+00:28.219  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_30.png'
+frame 31/64
+00:28.266  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_31_mask.png'
+00:28.391  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_31.png'
+frame 32/64
+00:28.453  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_32_mask.png'
+00:28.578  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_32.png'
+frame 33/64
+00:28.672  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_33_mask.png'
+00:28.797  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_33.png'
+frame 34/64
+00:28.859  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_34_mask.png'
+00:28.969  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_34.png'
+frame 35/64
+00:29.031  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_35_mask.png'
+00:29.141  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_35.png'
+frame 36/64
+00:29.219  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_36_mask.png'
+00:29.391  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_36.png'
+frame 37/64
+00:29.438  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_37_mask.png'
+00:29.578  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_37.png'
+frame 38/64
+00:29.641  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_38_mask.png'
+00:29.766  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_38.png'
+frame 39/64
+00:29.844  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_39_mask.png'
+00:29.984  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_39.png'
+frame 40/64
+00:30.078  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_40_mask.png'
+00:30.219  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_40.png'
+frame 41/64
+00:30.281  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_41_mask.png'
+00:30.422  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_41.png'
+frame 42/64
+00:30.500  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_42_mask.png'
+00:30.625  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_42.png'
+frame 43/64
+00:30.688  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_43_mask.png'
+00:30.828  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_43.png'
+frame 44/64
+00:30.891  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_44_mask.png'
+00:31.016  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_44.png'
+frame 45/64
+00:31.094  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_45_mask.png'
+00:31.219  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_45.png'
+frame 46/64
+00:31.281  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_46_mask.png'
+00:31.422  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_46.png'
+frame 47/64
+00:31.484  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_47_mask.png'
+00:31.609  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_47.png'
+frame 48/64
+00:31.672  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_48_mask.png'
+00:31.813  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_48.png'
+frame 49/64
+00:31.875  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_49_mask.png'
+00:32.031  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_49.png'
+frame 50/64
+00:32.109  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_50_mask.png'
+00:32.266  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_50.png'
+frame 51/64
+00:32.344  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_51_mask.png'
+00:32.484  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_51.png'
+frame 52/64
+00:32.563  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_52_mask.png'
+00:32.750  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_52.png'
+frame 53/64
+00:32.828  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_53_mask.png'
+00:32.984  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_53.png'
+frame 54/64
+00:33.047  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_54_mask.png'
+00:33.203  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_54.png'
+frame 55/64
+00:33.281  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_55_mask.png'
+00:33.438  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_55.png'
+frame 56/64
+00:33.500  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_56_mask.png'
+00:33.703  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_56.png'
+frame 57/64
+00:33.766  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_57_mask.png'
+00:33.922  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_57.png'
+frame 58/64
+00:33.984  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_58_mask.png'
+00:34.141  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_58.png'
+frame 59/64
+00:34.203  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_59_mask.png'
+00:34.375  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_59.png'
+frame 60/64
+00:34.438  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_60_mask.png'
+00:34.594  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_60.png'
+frame 61/64
+00:34.656  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_61_mask.png'
+00:34.813  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_61.png'
+frame 62/64
+00:34.891  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_62_mask.png'
+00:35.047  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_62.png'
+frame 63/64
+00:35.109  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_63_mask.png'
+00:35.266  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\goods\intact\ship_63.png'
+frame 64/64
+00:35.891  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_00_mask.png'
+00:36.031  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_00.png'
+atlas 1024 x 68 -> C:\Users\bessu\Desktop\canvas\public\sprites\loot\chest\goods
+frame 1/64
+00:36.094  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_01_mask.png'
+00:36.250  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_01.png'
+frame 2/64
+00:36.313  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_02_mask.png'
+00:36.453  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_02.png'
+frame 3/64
+00:36.516  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_03_mask.png'
+00:36.656  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_03.png'
+frame 4/64
+00:36.719  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_04_mask.png'
+00:36.859  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_04.png'
+frame 5/64
+00:36.938  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_05_mask.png'
+00:37.078  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_05.png'
+frame 6/64
+00:37.125  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_06_mask.png'
+00:37.281  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_06.png'
+frame 7/64
+00:37.328  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_07_mask.png'
+00:37.484  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_07.png'
+frame 8/64
+00:37.531  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_08_mask.png'
+00:37.688  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_08.png'
+frame 9/64
+00:37.750  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_09_mask.png'
+00:37.891  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_09.png'
+frame 10/64
+00:37.953  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_10_mask.png'
+00:38.094  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_10.png'
+frame 11/64
+00:38.141  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_11_mask.png'
+00:38.281  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_11.png'
+frame 12/64
+00:38.344  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_12_mask.png'
+00:38.484  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_12.png'
+frame 13/64
+00:38.547  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_13_mask.png'
+00:38.688  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_13.png'
+frame 14/64
+00:38.750  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_14_mask.png'
+00:38.891  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_14.png'
+frame 15/64
+00:38.953  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_15_mask.png'
+00:39.094  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_15.png'
+frame 16/64
+00:39.156  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_16_mask.png'
+00:39.297  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_16.png'
+frame 17/64
+00:39.359  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_17_mask.png'
+00:39.500  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_17.png'
+frame 18/64
+00:39.578  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_18_mask.png'
+00:39.719  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_18.png'
+frame 19/64
+00:39.781  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_19_mask.png'
+00:39.953  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_19.png'
+frame 20/64
+00:40.031  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_20_mask.png'
+00:40.188  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_20.png'
+frame 21/64
+00:40.234  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_21_mask.png'
+00:40.375  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_21.png'
+frame 22/64
+00:40.438  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_22_mask.png'
+00:40.578  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_22.png'
+frame 23/64
+00:40.641  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_23_mask.png'
+00:40.781  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_23.png'
+frame 24/64
+00:40.844  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_24_mask.png'
+00:40.984  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_24.png'
+frame 25/64
+00:41.047  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_25_mask.png'
+00:41.188  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_25.png'
+frame 26/64
+00:41.250  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_26_mask.png'
+00:41.391  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_26.png'
+frame 27/64
+00:41.438  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_27_mask.png'
+00:41.594  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_27.png'
+frame 28/64
+00:41.656  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_28_mask.png'
+00:41.797  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_28.png'
+frame 29/64
+00:41.844  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_29_mask.png'
+00:41.984  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_29.png'
+frame 30/64
+00:42.047  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_30_mask.png'
+00:42.203  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_30.png'
+frame 31/64
+00:42.266  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_31_mask.png'
+00:42.406  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_31.png'
+frame 32/64
+00:42.469  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_32_mask.png'
+00:42.609  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_32.png'
+frame 33/64
+00:42.672  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_33_mask.png'
+00:42.797  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_33.png'
+frame 34/64
+00:42.859  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_34_mask.png'
+00:43.016  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_34.png'
+frame 35/64
+00:43.109  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_35_mask.png'
+00:43.250  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_35.png'
+frame 36/64
+00:43.313  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_36_mask.png'
+00:43.500  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_36.png'
+frame 37/64
+00:43.563  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_37_mask.png'
+00:43.703  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_37.png'
+frame 38/64
+00:43.766  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_38_mask.png'
+00:43.906  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_38.png'
+frame 39/64
+00:43.969  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_39_mask.png'
+00:44.109  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_39.png'
+frame 40/64
+00:44.172  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_40_mask.png'
+00:44.313  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_40.png'
+frame 41/64
+00:44.375  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_41_mask.png'
+00:44.516  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_41.png'
+frame 42/64
+00:44.578  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_42_mask.png'
+00:44.719  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_42.png'
+frame 43/64
+00:44.781  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_43_mask.png'
+00:44.938  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_43.png'
+frame 44/64
+00:44.984  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_44_mask.png'
+00:45.141  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_44.png'
+frame 45/64
+00:45.203  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_45_mask.png'
+00:45.344  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_45.png'
+frame 46/64
+00:45.406  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_46_mask.png'
+00:45.547  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_46.png'
+frame 47/64
+00:45.609  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_47_mask.png'
+00:45.750  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_47.png'
+frame 48/64
+00:45.797  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_48_mask.png'
+00:45.953  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_48.png'
+frame 49/64
+00:46.016  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_49_mask.png'
+00:46.156  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_49.png'
+frame 50/64
+00:46.219  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_50_mask.png'
+00:46.359  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_50.png'
+frame 51/64
+00:46.453  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_51_mask.png'
+00:46.594  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_51.png'
+frame 52/64
+00:46.656  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_52_mask.png'
+00:46.797  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_52.png'
+frame 53/64
+00:46.859  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_53_mask.png'
+00:47.000  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_53.png'
+frame 54/64
+00:47.063  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_54_mask.png'
+00:47.203  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_54.png'
+frame 55/64
+00:47.250  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_55_mask.png'
+00:47.406  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_55.png'
+frame 56/64
+00:47.453  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_56_mask.png'
+00:47.641  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_56.png'
+frame 57/64
+00:47.703  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_57_mask.png'
+00:47.844  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_57.png'
+frame 58/64
+00:47.906  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_58_mask.png'
+00:48.063  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_58.png'
+frame 59/64
+00:48.125  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_59_mask.png'
+00:48.266  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_59.png'
+frame 60/64
+00:48.328  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_60_mask.png'
+00:48.484  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_60.png'
+frame 61/64
+00:48.531  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_61_mask.png'
+00:48.688  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_61.png'
+frame 62/64
+00:48.750  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_62_mask.png'
+00:48.891  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_62.png'
+frame 63/64
+00:48.953  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_63_mask.png'
+00:49.109  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\loot\chest\lost\intact\ship_63.png'
+frame 64/64
+atlas 1024 x 124 -> C:\Users\bessu\Desktop\canvas\public\sprites\loot\chest\lost
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

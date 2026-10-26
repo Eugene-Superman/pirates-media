@@ -1,0 +1,109 @@
+00:00.063  color_management | Using OCIO=C:\Program Files\Blender Foundation\Blender 5.2\5.2\datafiles\colormanagement\config.ocio
+00:11.235  blend            | Read blend: "C:\Users\bessu\Desktop\blender-assets\port\port.blend"
+C:\Users\bessu\Desktop\blender-assets\port\build_harbour.py:244: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  world.use_nodes = True
+sky's sun at -35 deg, 10.0 deg up
+22:30:53 | INFO: Data are loaded, start creating Blender stuff
+22:30:53 | INFO: Blender create Mesh node x-Boats-Dutch-large-rigging-joined.001
+22:30:53 | INFO: Blender create Mesh node x-Boats-Dutch-large-baseB-joined.001
+22:30:53 | INFO: Blender create Mesh node Plane.038
+22:30:53 | INFO: glTF import finished in 0.58s
+22:30:53 | INFO: Data are loaded, start creating Blender stuff
+22:30:53 | INFO: Blender create Mesh node x-Boats-Dutch-large-baseA-joined
+22:30:54 | INFO: Blender create Mesh node x-Boats-Dutch-large-sails-closed-joined
+22:30:54 | INFO: Blender create Mesh node Plane.067
+22:30:54 | INFO: glTF import finished in 0.64s
+22:30:54 | INFO: Data are loaded, start creating Blender stuff
+22:30:54 | INFO: Blender create Mesh node x-Boats-Dutch-medium-rigging-joined
+22:30:54 | INFO: Blender create Mesh node x-Boats-Dutch-medium-baseB-joined
+22:30:54 | INFO: Blender create Mesh node Plane.072
+22:30:54 | INFO: glTF import finished in 0.44s
+00:15.063  cycles           | WARNING HIPEW initialization failed: Error opening HIP dynamic library
+warning: auction is hidden (0.17, 0.55)
+00:23.500  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\harbour\preview.png'
+rendered preview.png in 8 s
+C:\Users\bessu\Desktop\blender-assets\port\build_harbour.py:576: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  world.use_nodes = True
+22:31:03 | INFO: Data are loaded, start creating Blender stuff
+22:31:03 | INFO: Blender create Mesh node brass_goblet_01
+22:31:03 | INFO: Blender create Mesh node brass_goblet_02
+22:31:03 | INFO: Blender create Mesh node brass_goblet_03
+22:31:03 | INFO: glTF import finished in 0.15s
+00:25.625  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\harbour\medallion_tavern.png'
+medallion tavern
+22:31:05 | INFO: Data are loaded, start creating Blender stuff
+22:31:05 | INFO: Blender create Mesh node Plane.018
+22:31:05 | INFO: Blender create Mesh node Plane.025
+22:31:05 | INFO: Blender create Mesh node Plane.026
+22:31:05 | INFO: Blender create Mesh node Plane.020
+22:31:05 | INFO: Blender create Mesh node Plane.028
+22:31:05 | INFO: Blender create Mesh node Plane.024
+22:31:05 | INFO: Blender create Mesh node Plane.027
+22:31:05 | INFO: Blender create Mesh node Plane.029
+22:31:05 | INFO: Blender create Mesh node Plane.021
+22:31:06 | INFO: Blender create Mesh node DiameterSmall.012
+22:31:06 | INFO: Blender create Mesh node DiameterSmall.030
+22:31:06 | INFO: Blender create Mesh node DiameterSmall.035
+22:31:06 | INFO: Blender create Mesh node DiameterSmall.004
+22:31:06 | INFO: Blender create Mesh node DiameterSmall.032
+22:31:06 | INFO: Blender create Mesh node DiameterSmall.034
+22:31:06 | INFO: Blender create Mesh node DiameterSmall.033
+22:31:06 | INFO: Blender create Mesh node Ring.077
+22:31:06 | INFO: Blender create Mesh node Ring.080
+22:31:06 | INFO: Blender create Mesh node Ring.061
+22:31:06 | INFO: glTF import finished in 0.29s
+00:27.719  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\harbour\medallion_market.png'
+medallion market
+22:31:07 | INFO: Data are loaded, start creating Blender stuff
+22:31:07 | INFO: Blender create Mesh node Plane.013
+22:31:07 | INFO: glTF import finished in 0.05s
+22:31:07 | INFO: Data are loaded, start creating Blender stuff
+22:31:07 | INFO: Blender create Mesh node Cube.027
+22:31:07 | INFO: glTF import finished in 0.05s
+00:29.610  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\harbour\medallion_workshop.png'
+medallion workshop
+22:31:09 | INFO: Data are loaded, start creating Blender stuff
+22:31:09 | INFO: Blender create Mesh node x-Boats-Dutch-medium-rigging-joined
+22:31:09 | INFO: Blender create Mesh node x-Boats-Dutch-medium-baseB-joined
+22:31:09 | INFO: Blender create Mesh node Plane.072
+22:31:10 | INFO: glTF import finished in 0.33s
+00:31.891  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\harbour\medallion_shipyard.png'
+medallion shipyard
+22:31:11 | INFO: Data are loaded, start creating Blender stuff
+22:31:11 | INFO: Blender create Mesh node Cube.025
+22:31:12 | INFO: Blender create Mesh node Cube.068
+22:31:12 | INFO: Blender create Mesh node Cube.088
+22:31:12 | INFO: Blender create Mesh node Cylinder.016
+22:31:12 | INFO: Blender create Mesh node Cube.027
+22:31:12 | INFO: Blender create Mesh node Cube.003
+22:31:12 | INFO: Blender create Mesh node Cylinder.001
+22:31:12 | INFO: Blender create Mesh node Cylinder.002
+22:31:12 | INFO: Blender create Mesh node Cylinder.003
+22:31:12 | INFO: Blender create Mesh node Cylinder.039
+22:31:12 | INFO: glTF import finished in 0.21s
+00:33.985  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\harbour\medallion_arsenal.png'
+medallion arsenal
+22:31:14 | INFO: Data are loaded, start creating Blender stuff
+22:31:14 | INFO: Blender create Mesh node Cylinder.001
+22:31:14 | INFO: glTF import finished in 0.06s
+22:31:14 | INFO: Data are loaded, start creating Blender stuff
+22:31:14 | INFO: Blender create Mesh node Plane
+22:31:14 | INFO: Blender create Mesh node Plane.016
+22:31:14 | INFO: Blender create Mesh node Plane.020
+22:31:14 | INFO: glTF import finished in 0.11s
+00:36.016  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\harbour\medallion_guild.png'
+medallion guild
+22:31:16 | INFO: Data are loaded, start creating Blender stuff
+22:31:16 | INFO: Blender create Mesh node Plane.020
+22:31:16 | INFO: Blender create Mesh node Plane.002
+22:31:16 | INFO: Blender create Mesh node Plane.005
+22:31:16 | INFO: Blender create Mesh node Plane.006
+22:31:16 | INFO: Blender create Mesh node Plane.007
+22:31:16 | INFO: glTF import finished in 0.40s
+00:38.266  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\harbour\medallion_auction.png'
+medallion auction
+{"tavern": {"at": [0.5568, 0.5567], "hidden": false}, "workshop": {"at": [0.3983, 0.5509], "hidden": false}, "market": {"at": [0.4801, 0.5778], "hidden": false}, "shipyard": {"at": [0.9322, 0.615], "hidden": false}, "arsenal": {"at": [0.7503, 0.7906], "hidden": false}, "guild": {"at": [0.5732, 0.3409], "hidden": false}, "auction": {"at": [0.1705, 0.5528], "hidden": true}}
+HARBOUR DONE in 27 s
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

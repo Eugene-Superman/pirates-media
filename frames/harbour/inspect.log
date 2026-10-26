@@ -1,0 +1,34 @@
+00:00.063  color_management | Using OCIO=C:\Program Files\Blender Foundation\Blender 5.2\5.2\datafiles\colormanagement\config.ocio
+00:08.360  blend            | Read blend: "C:\Users\bessu\Desktop\blender-assets\port\port.blend"
+downloaded dutch_ship_large_01
+15:14:58 | INFO: Data are loaded, start creating Blender stuff
+15:14:58 | INFO: Blender create Mesh node x-Boats-Dutch-large-baseA-joined
+15:14:58 | INFO: Blender create Mesh node x-Boats-Dutch-large-sails-closed-joined
+15:14:59 | INFO: Blender create Mesh node Plane.067
+15:14:59 | INFO: glTF import finished in 0.62s
+downloaded dutch_ship_large_02
+15:15:22 | INFO: Data are loaded, start creating Blender stuff
+15:15:22 | INFO: Blender create Mesh node x-Boats-Dutch-large-rigging-joined.001
+15:15:23 | INFO: Blender create Mesh node x-Boats-Dutch-large-baseB-joined.001
+15:15:23 | INFO: Blender create Mesh node Plane.038
+15:15:23 | INFO: glTF import finished in 0.56s
+downloaded dutch_ship_medium
+15:15:27 | INFO: Data are loaded, start creating Blender stuff
+15:15:27 | INFO: Blender create Mesh node x-Boats-Dutch-medium-rigging-joined
+15:15:27 | INFO: Blender create Mesh node x-Boats-Dutch-medium-baseB-joined
+15:15:27 | INFO: Blender create Mesh node Plane.072
+15:15:27 | INFO: glTF import finished in 0.40s
+downloaded ship_pinnace
+15:15:35 | INFO: Data are loaded, start creating Blender stuff
+15:15:35 | INFO: Blender create Mesh node Plane.041
+15:15:35 | INFO: Blender create Mesh node Cylinder.042
+15:15:35 | INFO: Blender create Mesh node Plane.046
+15:15:35 | INFO: Blender create Mesh node Plane.498
+15:15:35 | INFO: Blender create Mesh node Plane.057
+15:15:35 | INFO: Blender create Mesh node Plane.043
+15:15:35 | INFO: Blender create Mesh node Plane.002
+15:15:35 | INFO: glTF import finished in 0.96s
+INSPECT DONE
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

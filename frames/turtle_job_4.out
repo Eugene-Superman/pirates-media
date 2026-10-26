@@ -1,0 +1,199 @@
+00:00.062  color_management | Using OCIO=C:\Program Files\Blender Foundation\Blender 5.2\5.2\datafiles\colormanagement\config.ocio
+00:03.593  blend            | Read blend: "C:\Users\bessu\Desktop\blender-assets\ships\monsters\seaTurtle\seaTurtle.blend"
+00:05.453  cycles           | WARNING HIPEW initialization failed: Error opening HIP dynamic library
+00:06.031  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_00_mask.png'
+00:06.281  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_00.png'
+frame 1/64
+00:06.390  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_01_mask.png'
+00:06.609  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_01.png'
+frame 2/64
+00:06.781  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_02_mask.png'
+00:06.984  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_02.png'
+frame 3/64
+00:07.093  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_03_mask.png'
+00:07.312  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_03.png'
+frame 4/64
+00:07.422  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_04_mask.png'
+00:07.656  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_04.png'
+frame 5/64
+00:07.734  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_05_mask.png'
+00:07.968  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_05.png'
+frame 6/64
+00:08.062  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_06_mask.png'
+00:08.281  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_06.png'
+frame 7/64
+00:08.375  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_07_mask.png'
+00:08.593  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_07.png'
+frame 8/64
+00:08.672  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_08_mask.png'
+00:08.953  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_08.png'
+frame 9/64
+00:09.047  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_09_mask.png'
+00:09.312  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_09.png'
+frame 10/64
+00:09.437  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_10_mask.png'
+00:09.640  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_10.png'
+frame 11/64
+00:09.765  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_11_mask.png'
+00:10.000  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_11.png'
+frame 12/64
+00:10.093  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_12_mask.png'
+00:10.297  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_12.png'
+frame 13/64
+00:10.406  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_13_mask.png'
+00:10.640  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_13.png'
+frame 14/64
+00:10.750  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_14_mask.png'
+00:10.968  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_14.png'
+frame 15/64
+00:11.078  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_15_mask.png'
+00:11.312  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_15.png'
+frame 16/64
+00:11.406  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_16_mask.png'
+00:11.640  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_16.png'
+frame 17/64
+00:11.734  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_17_mask.png'
+00:11.953  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_17.png'
+frame 18/64
+00:12.062  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_18_mask.png'
+00:12.312  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_18.png'
+frame 19/64
+00:12.406  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_19_mask.png'
+00:12.625  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_19.png'
+frame 20/64
+00:12.734  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_20_mask.png'
+00:12.968  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_20.png'
+frame 21/64
+00:13.078  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_21_mask.png'
+00:13.312  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_21.png'
+frame 22/64
+00:13.422  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_22_mask.png'
+00:13.625  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_22.png'
+frame 23/64
+00:13.734  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_23_mask.png'
+00:13.953  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_23.png'
+frame 24/64
+00:14.031  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_24_mask.png'
+00:14.265  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_24.png'
+frame 25/64
+00:14.359  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_25_mask.png'
+00:14.593  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_25.png'
+frame 26/64
+00:14.703  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_26_mask.png'
+00:14.953  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_26.png'
+frame 27/64
+00:15.047  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_27_mask.png'
+00:15.297  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_27.png'
+frame 28/64
+00:15.422  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_28_mask.png'
+00:15.640  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_28.png'
+frame 29/64
+00:15.734  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_29_mask.png'
+00:15.937  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_29.png'
+frame 30/64
+00:16.031  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_30_mask.png'
+00:16.250  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_30.png'
+frame 31/64
+00:16.375  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_31_mask.png'
+00:16.593  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_31.png'
+frame 32/64
+00:16.703  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_32_mask.png'
+00:16.922  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_32.png'
+frame 33/64
+00:17.000  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_33_mask.png'
+00:17.203  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_33.png'
+frame 34/64
+00:17.281  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_34_mask.png'
+00:17.515  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_34.png'
+frame 35/64
+00:17.625  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_35_mask.png'
+00:17.828  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_35.png'
+frame 36/64
+00:17.922  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_36_mask.png'
+00:18.203  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_36.png'
+frame 37/64
+00:18.297  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_37_mask.png'
+00:18.578  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_37.png'
+frame 38/64
+00:18.672  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_38_mask.png'
+00:18.937  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_38.png'
+frame 39/64
+00:19.031  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_39_mask.png'
+00:19.265  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_39.png'
+frame 40/64
+00:19.375  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_40_mask.png'
+00:19.609  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_40.png'
+frame 41/64
+00:19.734  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_41_mask.png'
+00:19.984  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_41.png'
+frame 42/64
+00:20.062  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_42_mask.png'
+00:20.297  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_42.png'
+frame 43/64
+00:20.406  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_43_mask.png'
+00:20.625  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_43.png'
+frame 44/64
+00:20.703  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_44_mask.png'
+00:20.922  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_44.png'
+frame 45/64
+00:21.031  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_45_mask.png'
+00:21.250  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_45.png'
+frame 46/64
+00:21.359  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_46_mask.png'
+00:21.562  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_46.png'
+frame 47/64
+00:21.687  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_47_mask.png'
+00:21.890  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_47.png'
+frame 48/64
+00:21.984  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_48_mask.png'
+00:22.218  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_48.png'
+frame 49/64
+00:22.297  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_49_mask.png'
+00:22.500  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_49.png'
+frame 50/64
+00:22.609  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_50_mask.png'
+00:22.843  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_50.png'
+frame 51/64
+00:22.953  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_51_mask.png'
+00:23.172  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_51.png'
+frame 52/64
+00:23.297  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_52_mask.png'
+00:23.531  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_52.png'
+frame 53/64
+00:23.625  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_53_mask.png'
+00:23.843  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_53.png'
+frame 54/64
+00:23.937  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_54_mask.png'
+00:24.172  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_54.png'
+frame 55/64
+00:24.281  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_55_mask.png'
+00:24.515  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_55.png'
+frame 56/64
+00:24.609  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_56_mask.png'
+00:24.843  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_56.png'
+frame 57/64
+00:24.953  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_57_mask.png'
+00:25.187  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_57.png'
+frame 58/64
+00:25.281  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_58_mask.png'
+00:25.515  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_58.png'
+frame 59/64
+00:25.609  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_59_mask.png'
+00:25.812  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_59.png'
+frame 60/64
+00:25.953  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_60_mask.png'
+00:26.187  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_60.png'
+frame 61/64
+00:26.281  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_61_mask.png'
+00:26.515  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_61.png'
+frame 62/64
+00:26.593  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_62_mask.png'
+00:26.797  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_62.png'
+frame 63/64
+00:26.906  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_63_mask.png'
+00:27.125  render           | Saved: 'C:\Users\bessu\Desktop\blender-assets\frames\monsters\seaTurtle\sinking\swim_00_63.png'
+frame 64/64
+atlas 1024 x 140 -> C:\Users\bessu\Desktop\canvas\public\sprites\ships\monsters\seaTurtle
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit
