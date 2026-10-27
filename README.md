@@ -12,6 +12,8 @@ blender-assets/
   ships/<line>/<ship>/   one folder per ship: <ship>.blend, build.py, its own textures/
     starter/sloop/       the Starter Sloop every player gets (game class "sloop")
     european/coastalBark/ the Coastal Bark, the European line's tier 1 (game class "coastalBark")
+    european/corsair/    the Corsair, its tier 2: three masts of orange canvas, three tiers of guns, a ram and a gilt
+                         figurehead at the bow (game class "corsair"); its build.py fetches its Poly Haven sets itself
     bots/fishingBoat/    the bots' fishing boat, three looks (game class "fishingBoat")
     bots/merchantSloop/  the bots' merchant sloop, two looks (game class "merchantSloop")
     bots/smugglerSloop/  the bots' smuggler sloop (game class "smugglerSloop")
@@ -26,7 +28,11 @@ blender-assets/
   effects/sky/           build_clouds.py: the light clouds drifting over the sea
   effects/foam/          build_foam.py: foam for ships' wakes, the water round a wreck and the sea's whitecaps
   sounds/                build_sounds.py + source/: the game's sounds, cut from CC0 recordings (CREDITS.md)
-  islands/               islands.blend + build_islands.py: the ten island shapes in five looks
+  islands/               islands.blend + build_islands.py: the ten island shapes in five looks;
+                         islands.json (the game's islands, from the game) and export_islands.mjs (which writes it);
+                         build_outlines.py: each island's coast as a picture to paint the island over;
+                         build_island_art.py + source/painted/: the paintings made over them, laid on the islands
+                         for the game
   port/                  port.blend + build_port.py: the port (Saltwind Harbour), its island, town, castle and harbour;
                          layout.json (its geometry, from the game) and export_layout.mjs (which writes it);
                          build_port_art.py + align_port_art.py: the painting of it the game shows, laid on the
@@ -188,6 +194,60 @@ few, set the environment variable `ISLAND_ONLY=tropical:bean,desert:cay` (look:s
   its picture.
 - Camera and sun are the game's, as for the ships: a change of `CAM_PITCH`/`CAM_YAW` needs a re-render here too.
 
+### Outlines to paint the islands over
+
+The game makes up its islands from a fixed seed (`canvas/src/game/world/World.ts`), 24 of them besides the port's.
+To paint them, each one's coast is drawn as the game sees it, as a guide to paint over:
+
+1. `cd canvas && node ../blender-assets/islands/export_islands.mjs` writes `islands/islands.json`: every island's
+   centre, map square, size, heights, coast and palms, and the port's coast. Run it again after a change to the
+   islands in the game.
+2. `python islands/build_outlines.py [folder]` (or with Blender's Python:
+   `blender --background --python islands/build_outlines.py -- [folder]`) draws, in `islands/outlines/` unless a
+   folder is given:
+   - `island_NN_<square>.png`: the coast at the water's level, a black line on white, in the game's camera (pitch 30°,
+     yaw 45°) at the port's art's scale (2.8 pixels a world unit), with room round it for the shallows and above it
+     for the cliffs, hill and palms, which rise up the picture;
+   - `map.png`: the sea from above, north at the top, the squares A1…H8, the port and each island's number;
+   - `outlines.json`: the scale, the camera, and where each island's centre is in its picture (`centre`, pixels from
+     its top left): where a painting made over it goes in the game.
+
+A painting is best made at its outline's size with its beach on the line, the land inside it and the heights rising
+up from it; the island on a transparent sea, nothing round it (no shallows: the game draws them).
+
+### The painted islands
+
+The game shows the paintings made over the outlines (`islands/source/painted/island_NN_<square>.png`, named after
+their outlines) in place of its vector islands:
+
+    blender --background --python islands/build_island_art.py
+
+(or `python islands/build_island_art.py`, with numpy and Pillow; about 10 seconds an island, `ISLAND_ONLY=island_01,…`
+in the environment for a few). Then `npm run check` in the game: the coasts it writes are the game's logic.
+
+- A painting needn't lie on its outline exactly (they come larger, a little longer or shorter), and it is never bent
+  or stretched to fit, which would make it look melted: it is cleaned (the cut-out's red and yellow halo dropped, the
+  island made fully opaque, specks round it and pinholes in it gone), made smaller the same both ways and moved until
+  its silhouette covers the island's coast best, and then the island is changed to fit it: its coast becomes the
+  painting's beach (its distance from the centre at 96 angles, smoothed by a degree and a half so a rock on it isn't
+  a cape), written into `canvas/src/game/world/paintedCoasts.json`, so ships run aground where they see the beach.
+  The island's place, heights and palms stay as the game made them up.
+- Cut like the port's painting: each pixel goes with the ground it stands on into slices 16 units deep along the
+  camera's view, sorted with the ships, so a ship sails behind an island's trees and in front of its beach. What rises
+  over the far beach goes with the beach under it.
+- Shallows: the light water round each island, made here rather than painted: from the new coast out over the sea,
+  fading smoothly the farther from the beach (`SHALLOWS_WIDTH`, `SHALLOWS_EASE`), wider in some places than others
+  (`SHALLOWS_WOBBLE`), from a light turquoise by the beach to the sea's (`SHALLOWS_NEAR`, `SHALLOWS_FAR`). A small
+  picture (`SHALLOWS_PX`, a quarter of the painting's scale): the game stretches it smooth, under the ships.
+- Output: `canvas/public/sprites/islands/island_NN.webp` (an island's slices on one page), `island_NN_shallows.webp`
+  and `islands.json` (where each slice goes and is sorted by, where the shallows go),
+  `canvas/src/game/world/paintedCoasts.json`; and in `frames/islands/painted/`, each painting as laid on its island
+  over its shallows and the sea, with the coast the game takes from it drawn in red over it: look there after a new
+  painting. The script prints how much of the coast each painting covered and how much bigger or
+  smaller the island became.
+- `export_islands.mjs` reads the islands from the game, painted coasts and all, so outlines drawn after it show the
+  painted coasts, and a painting laid again fits the coast it gave.
+
 ## Port
 
 The port in the middle of the map: a green island with a bay, two curved breakwaters round it (a lighthouse on the
@@ -312,8 +372,9 @@ pictures of a sheet are scaled alike, so a heavy gun is drawn bigger than a ligh
 `.json` (each one's tile). One left out of `SHEETS` shows its tier in the game instead.
 
 The ships are a picture each, `icons/source/ship_<id>.webp` (the id is the game's,
-`canvas/src/game/ships/shipLines.ts`): so far the Starter Sloop (`ship_sloop.webp`) and the Coastal Bark
-(`ship_coastalBark.webp`). Each fills its tile across, in its middle, with the background its rigging encloses cut out.
+`canvas/src/game/ships/shipLines.ts`): so far the Starter Sloop (`ship_sloop.webp`), the Coastal Bark
+(`ship_coastalBark.webp`) and the Corsair (`ship_corsair.webp`, a render of its model on the same dark background).
+Each fills its tile across, in its middle, with the background its rigging encloses cut out.
 Output: `ships.webp` (256-pixel tiles: the info window shows a ship 236 wide) and `ships.json`. A ship without a picture
 shows an empty slot. A new one: its picture in `icons/source/`, its line in `SHEETS` of `build_ship_icons.py` (its box
 on the picture), and the script run again.

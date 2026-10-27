@@ -1,7 +1,10 @@
 """
-Corsair (line "european", game class "corsair"), built from code: the European line's tier 2, the ship the starting
-waters lead to. Two masts with a course and a topsail each and a jib, a gun deck of six ports a side, a forecastle and
-a quarterdeck, a stern gallery with the royal crest; dark varnished planks with royal blue and gilt.
+Corsair (line "european", game class "corsair"), built from code: the European line's tier 2, a warship that looks the
+part. Three masts, the fore and the main with a course, a topsail and a topgallant each, the mizzen with a spanker and a
+topsail, two headsails on a long bowsprit, all of orange canvas; three tiers of guns: a lower battery of eleven ports a
+side in the hull, the main battery in the waist and light guns on the quarterdeck and the forecastle; a stern of two
+tiers of gallery windows under the royal crest; at the bow a blue knee of the head with an iron ram and a gilt
+figurehead. Dark varnished planks with two royal blue strakes between gilt mouldings.
 
 Run in Blender: open corsair.blend next to this file, Scripting tab -> Open -> build.py -> Run Script.
 It rebuilds the "Ship" collection of the open file, so render_sprites.py works on it unchanged.
@@ -13,15 +16,17 @@ DAMAGE_STAGES); render_stages.py renders them all. Each stage keeps the damage o
 topmast gone, listing to port, low in the water, wreckage alongside (the game animates the sinking).
 
 Axes and scale match the game: 1 Blender unit = 1 game unit, the bow points to +X, port side to +Y, Z up,
-waterline at Z = 0. Hull about 42 units long (the sloop's 31), collision radius 13 in the game.
+waterline at Z = 0. Hull about 49 units long at the waterline, 60 over the ram and the figurehead (the Coastal
+Bark's 42).
 
 Textures: scanned CC0 wood and metal from Poly Haven (polyhaven.com), shared by all ships in
-blender-assets/textures/polyhaven/; the sails are generated into textures/ next to this file.
-They are linked by relative paths, not packed.
+blender-assets/textures/polyhaven/ and downloaded there on the first run if missing; the sails are generated into
+textures/ next to this file. They are linked by relative paths, not packed.
 """
 
 import math
 import os
+import urllib.request
 
 import bmesh
 import bpy
@@ -32,28 +37,42 @@ from mathutils import Matrix, Vector
 # Dimensions (game units)
 # ---------------------------------------------------------------------------
 
-KEEL_Z = -2.2
-DECK_Z = 5.6  # the gun deck, open in the waist
-FORE_Z = 7.7  # forecastle deck
-FORE_BACK = 11.0  # back wall of the forecastle
-QUARTER_Z = 8.5  # quarterdeck, over the captain's cabin
-QUARTER_FRONT = -9.5  # front wall of the quarterdeck
-BEAM = 7.3  # largest half-width of the hull
-WALL = 0.32  # hull wall thickness
+KEEL_Z = -2.8
+DECK_Z = 7.4  # the upper deck, open in the waist: the main battery stands on it
+FORE_Z = 9.9  # forecastle deck
+FORE_BACK = 14.5  # back wall of the forecastle
+QUARTER_Z = 10.6  # quarterdeck, over the captain's cabin
+QUARTER_FRONT = -12.5  # front wall of the quarterdeck
+BEAM = 8.8  # largest half-width of the hull
+WALL = 0.36  # hull wall thickness
 
-# Masts: where they stand, how high, the sails on each (bottom, top, half-width at the foot and at the head)
+# Masts: where they stand, how high, the square sails on each (bottom, top, half-width at the foot and at the head),
+# the top (the platform over the lower mast) and the cross-trees (over the topmast). The mizzen's lowest sail is the
+# spanker, fore and aft: its foot on a boom, its head on a gaff, both reaching aft (SPANKER)
 MASTS = {
-    "fore": dict(x=8.0, top=DECK_Z + 30.0, sails=((12.0, 21.0, 8.4, 7.6), (23.6, 31.6, 6.8, 5.6))),
-    "main": dict(x=-3.4, top=DECK_Z + 33.5, sails=((12.6, 22.6, 9.4, 8.6), (25.2, 34.6, 7.6, 6.2))),
+    "fore": dict(x=14.0, top=DECK_Z + 39.0, top_z=25.7, cross_z=37.0,
+                 sails=((14.6, 24.5, 10.2, 9.4), (27.0, 36.0, 8.2, 6.8), (38.0, 43.4, 5.8, 4.8))),
+    "main": dict(x=-0.5, top=DECK_Z + 43.0, top_z=27.2, cross_z=39.5,
+                 sails=((15.2, 26.0, 11.4, 10.4), (28.6, 38.5, 9.0, 7.4), (40.6, 46.6, 6.4, 5.2))),
+    "mizzen": dict(x=-15.5, top=DECK_Z + 31.5, top_z=25.4, cross_z=34.0,
+                   sails=((26.8, 33.2, 6.6, 5.4),)),
 }
-SAIL_BELLY = 3.2  # how far a course bulges forward; a topsail bulges a little less
+SPANKER = dict(foot=14.0, head=24.0, boom=12.0, gaff=9.6, peak=3.6)  # heights, the boom's and gaff's length, the peak's rise
+SAIL_BELLY = 3.4  # how far a course bulges forward; the sails above it bulge a little less
 SAIL_CREASE = 0.22  # depth of the creases under the yard
 BRACE = 0.36  # radians: the yards are turned a little so the sails read from the side too
-BOWSPRIT_TIP = Vector((36.0, 0, 14.0))
+BOWSPRIT_TIP = Vector((47.0, 0, 18.5))
 
-# The gun deck's ports, one per side at each x: the game's cannon slots (src/game/ships/shipClasses.ts, corsair)
-CANNONS_X = (-7.6, -4.2, -0.8, 2.6, 6.0, 9.2)
-GUN_Z = DECK_Z + 0.85
+# Guns: rows of ports along each side, each port a pair (port and starboard). The lower battery's ports are cut in the
+# hull below the upper deck, the guns behind them out of sight but their muzzles; the main battery's stand on the
+# upper deck in the waist; light guns stand on the quarterdeck and the forecastle, firing through their bulwarks
+# prettier-ignore
+GUN_ROWS = (
+    dict(name="lower", xs=(-20.0, -16.6, -13.2, -9.8, -6.4, -3.0, 0.4, 3.8, 7.2, 10.6, 14.0), z=4.5, deck=None, lids=True, scale=1.0),
+    dict(name="main", xs=(-10.4, -7.2, -4.0, -0.8, 2.4, 5.6, 8.8, 12.0), z=DECK_Z + 0.85, deck=DECK_Z, lids=True, scale=1.0),
+    dict(name="quarter", xs=(-23.2, -20.4, -17.6), z=QUARTER_Z + 0.8, deck=QUARTER_Z, lids=False, scale=0.75),
+    dict(name="fore", xs=(17.6, 20.4), z=FORE_Z + 0.8, deck=FORE_Z, lids=False, scale=0.75),
+)
 
 # Real-world size of one texture tile, in game units: sets the plank width on the model
 HULL_TILE = 10.0
@@ -68,7 +87,7 @@ COLORS = {
     "brass": 0xD9A646,
     "lid": 0xA9342B,  # the inside of the gunport lids
     "iron": 0x34343A,
-    "sail": 0xF1E9D6,  # bleached canvas
+    "sail": 0xE07A30,  # canvas dyed orange
     "crest_blue": 0x23468F,
     "crest_gold": 0xE8B547,
     "rope": 0x8E6B44,
@@ -85,31 +104,34 @@ COLORS = {
 }
 
 # What each damage stage does to the model. Holes, posts, lids and debris are taken from the lists below in order, so
-# every stage keeps the damage of the previous one and adds to it. pennants: what is left of the main's and the fore's
+# every stage keeps the damage of the previous one and adds to it. pennants: what is left of the main's, the fore's and
+# the mizzen's
 # prettier-ignore
 DAMAGE_STAGES = {
     0: dict(soot=0.0, char=0.0, hull_holes=0, sail_holes=0, sail_tear=False, sail_burn=0.0, rail_lost=0,
-            lanterns_out=0, windows_out=0, lids_lost=0, pennants=(1.0, 1.0), crates=4, ropes_lost=0,
+            lanterns_out=0, windows_out=0, lids_lost=0, pennants=(1.0, 1.0, 1.0), crates=6, ropes_lost=0,
             mast_broken=False, list_deg=0.0, sink=0.0, debris=0),
-    1: dict(soot=0.3, char=0.0, hull_holes=3, sail_holes=4, sail_tear=False, sail_burn=0.0, rail_lost=3,
-            lanterns_out=0, windows_out=0, lids_lost=1, pennants=(0.8, 0.85), crates=4, ropes_lost=0,
+    1: dict(soot=0.3, char=0.0, hull_holes=4, sail_holes=4, sail_tear=False, sail_burn=0.0, rail_lost=4,
+            lanterns_out=0, windows_out=1, lids_lost=2, pennants=(0.8, 0.85, 0.85), crates=6, ropes_lost=0,
             mast_broken=False, list_deg=0.0, sink=0.0, debris=0),
-    2: dict(soot=0.5, char=0.0, hull_holes=6, sail_holes=8, sail_tear=True, sail_burn=0.0, rail_lost=8,
-            lanterns_out=1, windows_out=2, lids_lost=3, pennants=(0.5, 0.6), crates=3, ropes_lost=2,
+    2: dict(soot=0.5, char=0.0, hull_holes=9, sail_holes=8, sail_tear=True, sail_burn=0.0, rail_lost=10,
+            lanterns_out=1, windows_out=5, lids_lost=6, pennants=(0.5, 0.6, 0.6), crates=4, ropes_lost=3,
             mast_broken=False, list_deg=1.5, sink=0.2, debris=0),
-    3: dict(soot=0.65, char=0.3, hull_holes=9, sail_holes=11, sail_tear=True, sail_burn=0.36, rail_lost=13,
-            lanterns_out=2, windows_out=4, lids_lost=5, pennants=(0.0, 0.4), crates=2, ropes_lost=4,
-            mast_broken=False, list_deg=3.0, sink=0.4, debris=3),
-    4: dict(soot=0.75, char=0.45, hull_holes=12, sail_holes=14, sail_tear=True, sail_burn=0.5, rail_lost=22,
-            lanterns_out=3, windows_out=7, lids_lost=8, pennants=(0.0, 0.0), crates=1, ropes_lost=99,
-            mast_broken=True, list_deg=8.0, sink=1.0, debris=9),
+    3: dict(soot=0.65, char=0.3, hull_holes=13, sail_holes=11, sail_tear=True, sail_burn=0.36, rail_lost=16,
+            lanterns_out=2, windows_out=10, lids_lost=11, pennants=(0.0, 0.4, 0.3), crates=3, ropes_lost=6,
+            mast_broken=False, list_deg=3.0, sink=0.45, debris=4),
+    4: dict(soot=0.75, char=0.45, hull_holes=18, sail_holes=14, sail_tear=True, sail_burn=0.5, rail_lost=28,
+            lanterns_out=3, windows_out=20, lids_lost=20, pennants=(0.0, 0.0, 0.0), crates=1, ropes_lost=99,
+            mast_broken=True, list_deg=8.0, sink=1.2, debris=12),
 }
 # Shot holes in the hull: x, height, side (+1 port, -1 starboard), radius. A sprite shows about 3 pixels per unit, so
-# a hole much smaller than a unit is lost; most sit between the waterline and the gilt wale, some in the blue strake
+# a hole much smaller than a unit is lost; most sit between the waterline and the gilt wale, some in the blue strakes
+# prettier-ignore
 HULL_HOLES = [
-    (-4.0, 2.6, -1, 1.0), (7.0, 2.2, 1, 1.1), (-12.0, 3.0, 1, 0.9), (11.5, 3.0, -1, 1.0), (1.0, 1.7, 1, 1.2),
-    (-8.5, 1.6, -1, 1.3), (14.5, 2.4, 1, 1.0), (4.3, 4.4, -1, 0.8), (-14.5, 2.2, -1, 1.1), (-2.4, 4.3, 1, 0.85),
-    (9.0, 1.4, -1, 1.2), (-6.0, 3.4, 1, 1.1),
+    (-5.0, 2.4, -1, 1.1), (9.0, 2.2, 1, 1.2), (-15.0, 3.0, 1, 1.0), (14.5, 2.8, -1, 1.1), (1.5, 1.7, 1, 1.3),
+    (-10.5, 1.6, -1, 1.4), (18.5, 2.4, 1, 1.0), (5.2, 6.3, -1, 0.9), (-18.5, 2.2, -1, 1.2), (-3.0, 6.2, 1, 0.9),
+    (11.0, 1.4, -1, 1.3), (-7.5, 3.2, 1, 1.2), (-21.0, 6.4, 1, 1.0), (21.0, 5.9, -1, 0.9), (-1.0, 2.9, -1, 1.2),
+    (7.5, 6.5, 1, 0.9), (-13.0, 6.3, -1, 1.0), (16.5, 1.8, 1, 1.1),
 ]
 # Holes in a sail, in its texture: u across, v up, radius. Each sail picks its own share of them (a seed per sail)
 SAIL_HOLES = [
@@ -117,17 +139,24 @@ SAIL_HOLES = [
     (0.44, 0.42, 0.065), (0.65, 0.6, 0.05), (0.25, 0.86, 0.04), (0.8, 0.16, 0.06), (0.1, 0.5, 0.05),
     (0.38, 0.2, 0.045), (0.92, 0.4, 0.035), (0.58, 0.3, 0.05), (0.2, 0.68, 0.045),
 ]
-# The balustrades' posts, the quarterdeck's (13) then the forecastle's (11), in the order they are shot away
-RAIL_LOSS_ORDER = (4, 15, 9, 1, 19, 11, 6, 13, 21, 2, 17, 8, 23, 0, 12, 18, 5, 14, 10, 22, 3, 7)
-# The gunport lids shot off, as (port along the side, side)
-LID_LOSS_ORDER = ((2, -1), (4, 1), (0, 1), (5, -1), (1, -1), (3, 1), (5, 1), (1, 1))
-# The stern's windows going dark: the transom's five (0-4), then the quarter galleries' (5-8)
-WINDOW_LOSS_ORDER = (1, 7, 3, 5, 0, 8, 4, 2, 6)
+QUARTER_POSTS = 16  # the quarterdeck balustrade's posts, then the forecastle's
+FORE_POSTS = 14
+
+
+def loss_order(count, seed):
+    """The order `count` things are lost in, the same every run: each stage keeps the damage of the one before"""
+    return tuple(int(i) for i in np.random.default_rng(seed).permutation(count))
+
+
+# The balustrades' posts, the quarterdeck's then the forecastle's, in the order they are shot away
+RAIL_LOSS_ORDER = loss_order(QUARTER_POSTS + FORE_POSTS, 3)
+# The stern's windows going dark: the transom's two rows of six (0-11), then the quarter galleries' (12-19)
+WINDOW_LOSS_ORDER = loss_order(20, 4)
 LANTERN_LOSS_ORDER = (2, 1, 0)  # the taffrail's lanterns smashed: starboard, port, then the big middle one
-FORE_BREAK_Z = DECK_Z + 4.8  # where the foremast snaps in stage 4
+FORE_BREAK_Z = DECK_Z + 5.4  # where the foremast snaps in stage 4
 FORE_FALL_ANGLE = 96.0  # degrees from upright: the broken foremast lies forward over the forecastle and the bow
 FORE_FALL_DIR = (1.0, 0.3)  # forward, a little to port, so the yards stay across the ship and the sails drape the bow
-MAIN_BREAK_Z = MASTS["main"]["sails"][0][1] + 2.6  # the main topmast snaps just above the top and goes overboard
+MAIN_BREAK_Z = MASTS["main"]["top_z"] + 1.4  # the main topmast snaps just above the top and goes overboard
 WEAR_SEED = 5.3  # soot and char blotches stay in the same places from stage to stage, they only grow
 
 
@@ -242,9 +271,17 @@ def value_noise(size, cells, rng):
     return rows[:, i] * (1 - f)[None, :] + rows[:, i + 1] * f[None, :]
 
 
+PH_URL = "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/{asset}/{asset}_{kind}_1k.jpg"
+
+
 def polyhaven(asset, kind):
-    """kind: diff / nor_gl / rough"""
+    """kind: diff / nor_gl / rough. Downloaded from Poly Haven (CC0) the first time a ship asks for it"""
     path = os.path.join(PH_DIR, f"{asset}_{kind}_1k.jpg")
+    if not os.path.exists(path):
+        os.makedirs(PH_DIR, exist_ok=True)
+        request = urllib.request.Request(PH_URL.format(asset=asset, kind=kind), headers={"User-Agent": "blender-assets"})
+        with urllib.request.urlopen(request, timeout=60) as response, open(path, "wb") as out:
+            out.write(response.read())
     img = bpy.data.images.load(path, check_existing=True)
     img.colorspace_settings.name = "sRGB" if kind == "diff" else "Non-Color"
     img.filepath = relpath(path)
@@ -561,21 +598,21 @@ def grid_surface(bm, point_at, cols, rows):
 
 def x_bow(z):
     """The stem leans forward and curves up into the beakhead"""
-    return 19.0 + 0.52 * z - 0.012 * z * z
+    return 24.5 + 0.55 * z - 0.011 * z * z
 
 
 def x_stern(z):
     """The transom rakes aft as it rises"""
-    return -18.6 - 0.2 * z
+    return -24.0 - 0.2 * z
 
 
 def section(z):
     """Width of the cross-section at height z (0..1): round bilge, and the sides fall in above the wale (tumblehome)"""
-    widest = 3.8
+    widest = 4.6
     if z <= widest:
         t = (widest - z) / (widest - KEEL_Z)
         return max(0.0, 1 - t * t) ** 0.5
-    return 1 - 0.0048 * (z - widest) ** 2
+    return 1 - 0.0036 * (z - widest) ** 2
 
 
 def plan(x, z):
@@ -583,11 +620,12 @@ def plan(x, z):
     xs, xb = x_stern(z), x_bow(z)
     if x >= xb:
         return 0.0
-    if x > 4:
-        t = (x - 4) / (xb - 4)
-        return BEAM * max(0.0, 1 - t * t) ** 0.58
-    if x < -7:
-        t = min(1.0, (-7 - x) / (-7 - xs))
+    if x > 6:
+        # A fine entry: the bow narrows to a sharp stem rather than a round one
+        t = (x - 6) / (xb - 6)
+        return BEAM * max(0.0, 1 - t * t) ** 0.85
+    if x < -10:
+        t = min(1.0, (-10 - x) / (-10 - xs))
         return BEAM * (1 - 0.3 * t**1.6)
     return BEAM
 
@@ -602,9 +640,9 @@ def rail_z(x):
         DECK_Z
         + 1.65
         + (QUARTER_Z - DECK_Z) * smoothstep(QUARTER_FRONT + 1.2, QUARTER_FRONT - 1.6, x)
-        + 0.6 * smoothstep(-15.5, -19.5, x)
+        + 0.7 * smoothstep(-20.5, -25.5, x)
         + (FORE_Z - DECK_Z) * smoothstep(FORE_BACK - 1.2, FORE_BACK + 1.6, x)
-        + 0.5 * smoothstep(17.5, 21.5, x)
+        + 0.6 * smoothstep(22.5, 27.5, x)
     )
 
 
@@ -730,23 +768,6 @@ def paint_crest(rgb, xs, ys, shade):
     return rgb
 
 
-def flag_texture(name, size=256):
-    """The ensign: royal blue with a gilt cross edged in white"""
-    n = (np.arange(size) + 0.5) / size
-    xs = n[None, :] * np.ones((size, 1))
-    ys = 1 - n[:, None] * np.ones((1, size))
-    blue = np.array(srgb(COLORS["flag_blue"]))
-    white = np.array(srgb(COLORS["flag_white"]))
-    gold = np.array(srgb(COLORS["flag_gold"]))
-    rgb = np.ones((size, size, 3)) * blue
-    cross_white = (np.abs(xs - 0.36) < 0.09) | (np.abs(ys - 0.5) < 0.13)
-    cross_gold = (np.abs(xs - 0.36) < 0.055) | (np.abs(ys - 0.5) < 0.08)
-    rgb = np.where(cross_white[..., None], white, rgb)
-    rgb = np.where(cross_gold[..., None], gold, rgb)
-    rgba = np.concatenate([rgb, np.ones((size, size, 1))], axis=2)
-    return save_image(name, rgba)
-
-
 # Which of SAIL_HOLES each sail's texture gets, in order: every sail is shot through in its own places
 SAIL_HOLE_PICKS = {
     "sail": (0, 5, 3, 8, 11, 1, 9, 6, 13, 2, 10, 4, 12, 7),
@@ -756,8 +777,9 @@ SAIL_HOLE_PICKS = {
 
 
 def sails(stage, index):
-    """The three sail textures for a stage: the fore course and the jib, both topsails, and the main course with the
-    crest. A stage with holes or fire gets its own images, so the intact ones stay as they are"""
+    """The three sail textures for a stage: the fore course, the headsails and the spanker; the topsails and the
+    topgallants; and the main course with the crest. A stage with holes or fire gets its own images, so the intact
+    ones stay as they are"""
     damaged = stage["sail_holes"] > 0 or stage["sail_burn"] > 0 or stage["sail_tear"]
     suffix = f"_d{index}" if damaged else ""
     hurt = stage if damaged else None
@@ -781,7 +803,7 @@ def make_materials(stage, index):
     light_wear = (stage["soot"] * 0.6, stage["char"] * 0.5)
     return sails(stage, index) | {
         # Dark varnished planks for the hull, light planks for the decks
-        "hull": scanned("CorsairHull", "wood_floor_deck", hue=0.52, saturation=0.85, value=0.72, wear=wear),
+        "hull": scanned("CorsairHull", "dark_wooden_planks", hue=0.485, saturation=1.45, value=0.95, wear=wear),
         "deck": scanned("CorsairDeck", "wood_planks", saturation=0.9, value=1.2, wear=wear),
         "weathered": scanned("CorsairWeathered", "weathered_brown_planks", value=0.6, wear=wear),
         "royal": scanned("CorsairRoyal", "weathered_brown_planks", tint=COLORS["royal"], normal=0.5, wear=wear),
@@ -794,7 +816,6 @@ def make_materials(stage, index):
         "port": plain("CorsairGunport", COLORS["port"], rough=1.0),
         "glass": plain("CorsairGlass", COLORS["glass"], rough=0.3, emission=1.5),
         "lantern": plain("CorsairLantern", COLORS["glass"], rough=0.3, emission=5.0),
-        "flag": plain("CorsairEnsign", 0xFFFFFF, rough=0.9, two_sided=True, image=flag_texture("corsair_ensign")),
         "pennant_blue": plain("CorsairPennantBlue", COLORS["flag_blue"], rough=0.9, two_sided=True),
         "pennant_white": plain("CorsairPennantWhite", COLORS["flag_white"], rough=0.9, two_sided=True),
         "grate": plain("CorsairGrate", COLORS["grate"], rough=1.0),
@@ -807,14 +828,15 @@ def make_materials(stage, index):
 # Hull
 # ---------------------------------------------------------------------------
 
-HULL_ROWS = [-2.2, -1.95, -1.4, -0.7, 0.0, 0.8, 1.6, 2.4, 3.2, 3.6, 3.85, 4.7, 5.0, 5.9, 7.25]
-TOP_ROWS = 4
-HULL_COLS = 70
-# Bands painted on the hull, by height: weathered below the waterline, varnish up to a gilt wale and a gilt
-# moulding, and the gun-port strake royal blue up to the gilt rail (higher at the bow and stern: varnish again)
+HULL_ROWS = [-2.8, -2.5, -1.8, -1.0, 0.0, 0.8, 1.6, 2.4, 3.3, 3.6, 4.5, 5.4, 5.7, 6.4, 7.05, 7.35, 8.2, 9.05]
+TOP_ROWS = 5
+HULL_COLS = 90
+# Bands painted on the hull, by height: weathered below the waterline, varnish up to a gilt wale, the lower battery's
+# strake royal blue up to a gilt moulding, varnish, another gilt moulding and the main battery's strake royal blue up to
+# the rail in the waist (higher at the bow and stern: varnish again)
 WEATHERED_TOP = 0.8
-GOLD = ((3.6, 3.85), (4.7, 5.0))
-ROYAL = (5.0, 7.3)
+GOLD = ((3.3, 3.6), (5.4, 5.7), (7.05, 7.35))
+ROYAL = ((3.6, 5.4), (7.35, 9.1))
 
 
 def build_hull(mats, coll):
@@ -862,7 +884,7 @@ def build_hull(mats, coll):
             f.material_index = 2
         elif any(lo <= zc <= hi for lo, hi in GOLD):
             f.material_index = 1
-        elif ROYAL[0] < zc < ROYAL[1]:
+        elif any(lo < zc < hi for lo, hi in ROYAL):
             f.material_index = 3
         else:
             f.material_index = 0
@@ -978,24 +1000,30 @@ def build_decks(parts, stage):
     bulkhead(parts, QUARTER_FRONT, DECK_Z, QUARTER_Z)
     w = inner_width(QUARTER_FRONT, QUARTER_Z)
     box(parts["gold_paint"], (QUARTER_FRONT + 0.07, 0, QUARTER_Z - 0.1), (0.24, 2 * w, 0.22))
-    for y in (-2.4, 2.4):
-        box(parts["gold_paint"], (QUARTER_FRONT + 0.06, y, DECK_Z + 1.1), (0.12, 1.5, 2.2))
-        box(parts["port"], (QUARTER_FRONT + 0.11, y, DECK_Z + 1.05), (0.1, 1.1, 1.9))
-        box(parts["brass"], (QUARTER_FRONT + 0.17, y - 0.38, DECK_Z + 1.0), (0.08, 0.12, 0.12))
-    for y in (-0.9, 0.9):
-        box(parts["glass"], (QUARTER_FRONT + 0.1, y, DECK_Z + 1.7), (0.1, 0.8, 0.7))
-    balustrade(parts, QUARTER_FRONT + 0.18, QUARTER_Z, w - 0.2, 12, lost_posts(stage, 0, 13), 1)
+    for y in (-2.9, 2.9):
+        box(parts["gold_paint"], (QUARTER_FRONT + 0.06, y, DECK_Z + 1.2), (0.12, 1.6, 2.4))
+        box(parts["port"], (QUARTER_FRONT + 0.11, y, DECK_Z + 1.15), (0.1, 1.2, 2.1))
+        box(parts["brass"], (QUARTER_FRONT + 0.17, y - 0.4, DECK_Z + 1.1), (0.08, 0.12, 0.12))
+    for y in (-1.0, 1.0, -5.0, 5.0):
+        box(parts["gold_paint"], (QUARTER_FRONT + 0.07, y, DECK_Z + 1.9), (0.1, 1.0, 0.95))
+        box(parts["glass"], (QUARTER_FRONT + 0.1, y, DECK_Z + 1.9), (0.1, 0.8, 0.75))
+    # Gilt pilasters between the doors and windows
+    for y in (-4.0, -1.9, 0.0, 1.9, 4.0):
+        box(parts["gold_paint"], (QUARTER_FRONT + 0.08, y, (DECK_Z + QUARTER_Z) / 2), (0.14, 0.22, QUARTER_Z - DECK_Z))
+    balustrade(parts, QUARTER_FRONT + 0.18, QUARTER_Z, w - 0.2, QUARTER_POSTS - 1, lost_posts(stage, 0, QUARTER_POSTS), 1)
 
     # The forecastle's back wall and its rail
     bulkhead(parts, FORE_BACK, DECK_Z, FORE_Z)
     w = inner_width(FORE_BACK, FORE_Z)
     box(parts["gold_paint"], (FORE_BACK - 0.07, 0, FORE_Z - 0.1), (0.24, 2 * w, 0.22))
-    box(parts["port"], (FORE_BACK - 0.1, 0, DECK_Z + 0.9), (0.1, 1.2, 1.6))
-    balustrade(parts, FORE_BACK - 0.18, FORE_Z, w - 0.2, 10, lost_posts(stage, 13, 11), -1)
+    for y in (-2.2, 2.2):
+        box(parts["gold_paint"], (FORE_BACK - 0.06, y, DECK_Z + 1.0), (0.12, 1.5, 2.0))
+        box(parts["port"], (FORE_BACK - 0.1, y, DECK_Z + 0.95), (0.1, 1.1, 1.8))
+    balustrade(parts, FORE_BACK - 0.18, FORE_Z, w - 0.2, FORE_POSTS - 1, lost_posts(stage, QUARTER_POSTS, FORE_POSTS), -1)
 
     # Ladders up to both raised decks
     for x0, x1, z1 in ((QUARTER_FRONT + 2.2, QUARTER_FRONT + 0.2, QUARTER_Z), (FORE_BACK - 2.0, FORE_BACK - 0.2, FORE_Z)):
-        for y in (3.4, -3.4):
+        for y in (4.3, -4.3):
             a = Vector((x0, y, DECK_Z))
             b = Vector((x1, y, z1))
             for s in (-0.45, 0.45):
@@ -1004,102 +1032,140 @@ def build_decks(parts, stage):
                 box(parts["deck"], a.lerp(b, i / 6), (0.22, 0.85, 0.07))
 
 
-def build_cannons(parts, stage):
-    """Six ports a side on the gun deck: a gilt frame, the lid hinged up, red inside, and a cannon run out. Damage
-    shoots lids off: one hangs from a hinge, the next is gone"""
-    z = GUN_Z
-    lost = LID_LOSS_ORDER[: stage["lids_lost"]]
-    for k, x in enumerate(CANNONS_X):
-        for side in (1, -1):
-            inner = inner_width(x, z)
-            p, n = hull_point(x, z, side)
-            t, n, b = side_frame(n)
-            box(parts["gold_paint"], p + n * 0.03, (1.15, 0.12, 1.0), (t, n, b))
-            box(parts["port"], p + n * 0.08, (0.85, 0.12, 0.72), (t, n, b))
-            # The lid, swung up above the port: its painted inside faces out
-            if (k, side) not in lost:
-                lid_at = p + n * 0.32 + b * 0.78
-                lid_up = (b + n * 0.9).normalized()
-                lid_n = lid_up.cross(t).normalized() * (1 if lid_up.cross(t).dot(n) > 0 else -1)
-                box(parts["lid"], lid_at, (0.95, 0.09, 0.8), (t, lid_n, lid_up))
-            elif lost.index((k, side)) % 2 == 0:
-                # Hanging by one hinge, twisted down the side
-                hang = (t * 0.5 - b).normalized()
-                box(parts["lid"], p + n * 0.15 + t * 0.3 - b * 0.55, (0.8, 0.09, 0.95), (hang.cross(n).normalized(), n, hang))
+# The ports with lids, as (row, port along the side, side), and the order damage shoots their lids off
+LIDDED = [
+    (r, k, side) for r, row in enumerate(GUN_ROWS) if row["lids"] for k in range(len(row["xs"])) for side in (1, -1)
+]
+LID_LOSS_ORDER = tuple(LIDDED[i] for i in loss_order(len(LIDDED), 5))
 
-            # Carriage and barrel, pointing out through the port
-            cy = side * (inner - 1.05)
-            box(parts["hull_wood"], (x, cy, DECK_Z + 0.34), (1.05, 1.35, 0.48))
-            for dx in (-0.42, 0.42):
-                for dy in (-0.46, 0.46):
-                    c = Vector((x + dx, cy + dy, DECK_Z + 0.21))
-                    rod(parts["iron"], c - Vector((0.08, 0, 0)), c + Vector((0.08, 0, 0)), 0.21, segs=10)
-            start = Vector((x, cy - side * 0.75, z))
-            m = Matrix.Translation(start) @ basis(Vector((0, side, 0)))
-            length = abs(p.y - start.y) + 0.65
-            lathe(
-                parts["iron"],
-                [(0.32, 0), (0.35, 0.12), (0.32, 0.3), (0.25, length - 0.2), (0.3, length - 0.12), (0.3, length), (0.17, length + 0.01)],
-                12,
-                m,
-            )
+
+def build_cannons(parts, stage):
+    """Every row of GUN_ROWS: a gilt frame round each port, the lid hinged up, red inside, and a cannon run out, on its
+    carriage where the deck is open, its muzzle alone out of the lower battery. Damage shoots lids off: one hangs from
+    a hinge, the next is gone"""
+    lost = LID_LOSS_ORDER[: stage["lids_lost"]]
+    for r, row in enumerate(GUN_ROWS):
+        z, s = row["z"], row["scale"]
+        for k, x in enumerate(row["xs"]):
+            for side in (1, -1):
+                inner = inner_width(x, z)
+                p, n = hull_point(x, z, side)
+                t, n, b = side_frame(n)
+                box(parts["gold_paint"], p + n * 0.03, (1.15 * s, 0.12, 1.0 * s), (t, n, b))
+                box(parts["port"], p + n * 0.08, (0.85 * s, 0.12, 0.72 * s), (t, n, b))
+                # The lid, swung up above the port: its painted inside faces out
+                if row["lids"] and (r, k, side) not in lost:
+                    lid_at = p + n * 0.32 + b * 0.78
+                    lid_up = (b + n * 0.9).normalized()
+                    lid_n = lid_up.cross(t).normalized() * (1 if lid_up.cross(t).dot(n) > 0 else -1)
+                    box(parts["lid"], lid_at, (0.95, 0.09, 0.8), (t, lid_n, lid_up))
+                elif row["lids"] and lost.index((r, k, side)) % 2 == 0:
+                    # Hanging by one hinge, twisted down the side
+                    hang = (t * 0.5 - b).normalized()
+                    box(parts["lid"], p + n * 0.15 + t * 0.3 - b * 0.55, (0.8, 0.09, 0.95), (hang.cross(n).normalized(), n, hang))
+
+                if row["deck"] is None:
+                    # The lower battery: only the muzzle shows, run out through the port
+                    start = Vector((x, side * (inner - 0.3), z))
+                else:
+                    # Carriage and barrel on the deck, pointing out through the port
+                    deck = row["deck"]
+                    cy = side * (inner - 1.05 * s)
+                    box(parts["hull_wood"], (x, cy, deck + 0.34 * s), (1.05 * s, 1.35 * s, 0.48 * s))
+                    for dx in (-0.42 * s, 0.42 * s):
+                        for dy in (-0.46 * s, 0.46 * s):
+                            c = Vector((x + dx, cy + dy, deck + 0.21 * s))
+                            rod(parts["iron"], c - Vector((0.08, 0, 0)), c + Vector((0.08, 0, 0)), 0.21 * s, segs=10)
+                    start = Vector((x, cy - side * 0.75 * s, z))
+                m = Matrix.Translation(start) @ basis(Vector((0, side, 0)))
+                length = abs(p.y - start.y) + 0.65 * s
+                lathe(
+                    parts["iron"],
+                    [(0.32 * s, 0), (0.35 * s, 0.12), (0.32 * s, 0.3), (0.25 * s, length - 0.2 * s), (0.3 * s, length - 0.12 * s), (0.3 * s, length), (0.17 * s, length + 0.01)],
+                    12,
+                    m,
+                )
+
+
+STERN_WINDOW_Y = (-3.75, -2.25, -0.75, 0.75, 2.25, 3.75)
+STERN_ROWS = (5.6, 8.9)  # the wardroom's windows and the captain's cabin's over them
+GALLERY_X = (-21.6, -19.9)
 
 
 def build_stern(parts, stage):
-    """The transom: a row of gallery windows, the royal crest over them, gilt mouldings; the rudder, the quarter
-    galleries on the sides, and three lanterns on the taffrail. Damage darkens windows and smashes lanterns"""
+    """The transom: two rows of gallery windows, the royal crest over them, gilt mouldings and pilasters; the rudder,
+    the quarter galleries on the sides, two tiers each, and three lanterns on the taffrail. Damage darkens windows and
+    smashes lanterns"""
     dark = set(WINDOW_LOSS_ORDER[: stage["windows_out"]])
     nx = Vector((-1, 0, -0.2)).normalized()
     up = Vector((-0.2, 0, 1)).normalized()
     side = Vector((0, 1, 0))
-    zc = 7.0
-    for k, y in enumerate((-3.0, -1.5, 0.0, 1.5, 3.0)):
-        c = Vector((x_stern(zc), y, zc)) + nx * 0.03
-        box(parts["gold_paint"], c, (1.25, 0.12, 1.35), (side, nx, up))
-        box(parts["port" if k in dark else "glass"], c + nx * 0.05, (0.95, 0.12, 1.05), (side, nx, up))
-        box(parts["gold_paint"], c + nx * 0.08, (0.08, 0.1, 1.05), (side, nx, up))  # the mullion
-    for z in (5.9, 8.0, 10.3):
+    for row, zc in enumerate(STERN_ROWS):
+        for k, y in enumerate(STERN_WINDOW_Y):
+            c = Vector((x_stern(zc), y, zc)) + nx * 0.03
+            box(parts["gold_paint"], c, (1.25, 0.12, 1.55), (side, nx, up))
+            box(parts["port" if row * 6 + k in dark else "glass"], c + nx * 0.05, (0.95, 0.12, 1.25), (side, nx, up))
+            box(parts["gold_paint"], c + nx * 0.08, (0.08, 0.1, 1.25), (side, nx, up))  # the mullion
+            box(parts["gold_paint"], c + nx * 0.08, (0.95, 0.1, 0.07), (side, nx, up))  # the transom bar
+    # Mouldings across the stern, and pilasters between the windows
+    for z in (4.1, 7.25, 10.45, 12.6):
         w = half_width(x_stern(z), z)
-        box(parts["gold_paint"], Vector((x_stern(z), 0, z)) + nx * 0.06, (2 * w - 0.2, 0.14, 0.26), (side, nx, up))
+        box(parts["gold_paint"], Vector((x_stern(z), 0, z)) + nx * 0.06, (2 * w - 0.2, 0.16, 0.3), (side, nx, up))
+    for zc in STERN_ROWS:
+        for y in (-4.5, -3.0, -1.5, 0.0, 1.5, 3.0, 4.5):
+            box(parts["gold_paint"], Vector((x_stern(zc), y, zc)) + nx * 0.07, (0.18, 0.12, 2.6), (side, nx, up))
 
-    # The royal crest on the taffrail: a blue shield in a gilt frame under a crown
-    c = Vector((x_stern(9.2), 0, 9.2)) + nx * 0.1
-    box(parts["gold_paint"], c, (2.1, 0.14, 1.9), (side, nx, up))
-    box(parts["royal"], c + nx * 0.06, (1.65, 0.12, 1.45), (side, nx, up))
-    box(parts["gold_paint"], c + nx * 0.1, (0.3, 0.1, 1.2), (side, nx, up))
-    box(parts["gold_paint"], c + nx * 0.1 + up * 0.15, (1.3, 0.1, 0.28), (side, nx, up))
-    crown = c + up * 1.25 + nx * 0.05
-    box(parts["brass"], crown, (1.3, 0.16, 0.35), (side, nx, up))
-    for dy in (-0.55, 0.0, 0.55):
-        lathe(parts["brass"], [(0.12, 0), (0.08, 0.3), (0.13, 0.42), (0.02, 0.55)], 6, Matrix.Translation(crown + side * dy + up * 0.15))
-    # Gilt scrolls at the corners of the transom
+    # The royal crest on the taffrail: a blue shield in a gilt frame under a crown, held by two gilt scrolls
+    c = Vector((x_stern(11.6), 0, 11.6)) + nx * 0.1
+    box(parts["gold_paint"], c, (2.8, 0.14, 2.3), (side, nx, up))
+    box(parts["royal"], c + nx * 0.06, (2.3, 0.12, 1.85), (side, nx, up))
+    box(parts["gold_paint"], c + nx * 0.1, (0.36, 0.1, 1.55), (side, nx, up))
+    box(parts["gold_paint"], c + nx * 0.1 + up * 0.18, (1.7, 0.1, 0.34), (side, nx, up))
+    crown = c + up * 1.5 + nx * 0.05
+    box(parts["brass"], crown, (1.6, 0.18, 0.42), (side, nx, up))
+    for dy in (-0.68, 0.0, 0.68):
+        lathe(parts["brass"], [(0.14, 0), (0.1, 0.36), (0.16, 0.5), (0.02, 0.66)], 6, Matrix.Translation(crown + side * dy + up * 0.18))
     for s in (-1, 1):
-        z = 9.6
-        y = s * (half_width(x_stern(z), z) - 0.25)
-        m = Matrix.Translation(Vector((x_stern(z), y, z)) + nx * 0.1) @ basis(Vector((0, 0, 1)))
-        lathe(parts["brass"], [(0.15, -1.6), (0.3, -1.2), (0.22, -0.4), (0.32, 0.2), (0.12, 0.7)], 8, m)
+        m = Matrix.Translation(c + side * s * 2.0 + nx * 0.05) @ basis(Vector((0, -s * 0.6, 1)))
+        lathe(parts["brass"], [(0.12, -1.0), (0.32, -0.6), (0.24, 0.0), (0.34, 0.5), (0.1, 1.0)], 8, m)
+    # Gilt figures at the corners of the transom, from the lower moulding up to the taffrail
+    for s in (-1, 1):
+        z = 8.0
+        y = s * (half_width(x_stern(z), z) - 0.3)
+        m = Matrix.Translation(Vector((x_stern(z), y, z)) + nx * 0.12) @ basis(Vector((0, 0, 1)))
+        lathe(parts["brass"], [(0.18, -3.6), (0.36, -3.1), (0.24, -2.0), (0.34, -0.8), (0.22, 0.6), (0.38, 1.8), (0.3, 3.2), (0.1, 4.4)], 10, m)
 
-    # Quarter galleries: a bay with windows on each side of the stern
+    # Quarter galleries: a bay of windows on each side of the stern, two tiers, a gilt cupola over them
     for i, s in enumerate((1, -1)):
-        for j, x in enumerate((-16.3, -14.8)):
-            p, n = hull_point(x, 7.3, s)
-            t, n, b = side_frame(n)
-            box(parts["gold_paint"], p + n * 0.25, (1.2, 0.5, 1.5), (t, n, b))
-            box(parts["port" if 5 + i * 2 + j in dark else "glass"], p + n * 0.5, (0.9, 0.08, 1.15), (t, n, b))
-        p, n = hull_point(-15.55, 6.1, s)
-        box(parts["hull_wood"], p + n * 0.3, (3.4, 0.6, 0.4))
-        p, n = hull_point(-15.55, 8.45, s)
-        box(parts["gold_paint"], p + n * 0.3, (3.4, 0.7, 0.3))
+        for tier, zc in enumerate(STERN_ROWS):
+            for j, x in enumerate(GALLERY_X):
+                p, n = hull_point(x, zc, s)
+                t, n, b = side_frame(n)
+                box(parts["gold_paint"], p + n * 0.2, (1.3, 0.4, 1.7), (t, n, b))
+                lit = 12 + i * 4 + tier * 2 + j not in dark
+                box(parts["glass" if lit else "port"], p + n * 0.42, (1.0, 0.06, 1.3), (t, n, b))
+            p, n = hull_point(sum(GALLERY_X) / 2, zc - 1.25, s)
+            box(parts["hull_wood"], p + n * 0.25, (4.0, 0.55, 0.4))
+            p, n = hull_point(sum(GALLERY_X) / 2, zc + 1.2, s)
+            box(parts["gold_paint"], p + n * 0.25, (4.0, 0.6, 0.3))
+        # A low gilt dome over the galleries and a drop under them, flattened against the side
+        for z, profile in (
+            (STERN_ROWS[-1] + 1.35, [(1.0, 0), (0.8, 0.35), (0.4, 0.7), (0.05, 1.0)]),
+            (STERN_ROWS[0] - 1.45, [(0.05, -1.1), (0.3, -0.7), (0.75, -0.3), (0.95, 0.0)]),
+        ):
+            p, n = hull_point(sum(GALLERY_X) / 2, z, s)
+            m = Matrix.Translation(p + n * 0.2) @ Matrix.Diagonal((1.6, 0.45, 1.0, 1.0))
+            lathe(parts["brass"], profile, 10, m)
 
     # Rudder
-    top = rail_z(-18) - 0.4
+    top = STERN_ROWS[0] - 1.6  # the rudder head goes into the counter under the stern windows
     pts = []
-    for z, back in ((-2.0, 1.9), (0.0, 1.8), (3.0, 1.2), (top, 0.8)):
+    for z, back in ((-2.6, 2.3), (0.0, 2.2), (2.4, 1.6), (top, 0.7)):
         xs = x_stern(z)
         pts.append((xs - 0.05, z, xs - 0.05 - back))
     prof = [(xa, z) for xa, z, xb in pts] + [(xb, z) for xa, z, xb in reversed(pts)]
     bm = parts["weathered_part"]
-    th = 0.38
+    th = 0.44
     front = [bm.verts.new((x, -th / 2, z)) for x, z in prof]
     back = [bm.verts.new((x, th / 2, z)) for x, z in prof]
     bm.faces.new(front)
@@ -1108,116 +1174,189 @@ def build_stern(parts, stage):
     for i in range(k):
         j = (i + 1) % k
         bm.faces.new((front[j], front[i], back[i], back[j]))
-    for z in (0.5, 3.6):
+    for z in (0.3, 2.0, 3.6):
         xs = x_stern(z)
-        box(parts["brass"], (xs - 0.6, 0, z), (1.2, th + 0.08, 0.16))
+        box(parts["brass"], (xs - 0.6, 0, z), (1.2, th + 0.08, 0.18))
 
     # Three lanterns on the taffrail, the middle one the biggest; a smashed one hangs dark and crooked
     out = set(LANTERN_LOSS_ORDER[: stage["lanterns_out"]])
-    for k, (y, s) in enumerate(((0.0, 1.25), (-2.6, 0.9), (2.6, 0.9))):
-        base = Vector((x_stern(10.5) + 0.6, y, rail_z(-19) + 0.1))
+    for k, (y, s) in enumerate(((0.0, 1.6), (-3.4, 1.15), (3.4, 1.15))):
+        base = Vector((x_stern(13.0) + 0.7, y, rail_z(-26) + 0.1))
         post = Vector((0.5, 0.35 * (1 if y >= 0 else -1), 1.25)) * s if k in out else Vector((0, 0, 1.4 * s))
-        rod(parts["spar"], base, base + post, 0.09, segs=6)
+        rod(parts["spar"], base, base + post, 0.1, segs=6)
         m = Matrix.Translation(base + post) @ (basis(post) if k in out else Matrix.Identity(4)) @ Matrix.Diagonal((s, s, s, 1))
         lathe(parts["port" if k in out else "lantern"], [(0.26, 0), (0.36, 0.34), (0.33, 0.85), (0.18, 0.96)], 6, m)
         lathe(parts["brass"], [(0.3, 0.9), (0.44, 0.98), (0.05, 1.35)], 6, m)
 
-    # The ensign on a staff over the stern
-    foot = Vector((x_stern(10.5) - 0.2, 0, rail_z(-19)))
-    head = foot + Vector((-1.6, 0, 6.2))
-    rod(parts["spar"], foot, head, 0.09, segs=6)
 
-    def ensign(u, v):
-        return head + Vector((-4.2 * u, 0.4 * math.sin(u * 3.2) * u, -0.2 - 2.6 * (1 - v)))
-
-    grid_surface(parts["flag"], ensign, 10, 4)
+def harpoon_launcher(parts, at, aim):
+    """A harpoon launcher on a turned post: the game's harpoon slots"""
+    lathe(parts["hull_wood"], [(0.55, 0), (0.45, 0.6), (0.3, 0.9)], 8, Matrix.Translation(at))
+    aim = aim.normalized()
+    across = Vector((0, 0, 1)).cross(aim).normalized()
+    mount = at + Vector((0, 0, 1.05))
+    rod(parts["iron"], mount - aim * 1.0, mount + aim * 1.6, 0.13, 0.1, segs=8)
+    for s in (1, -1):
+        bow_end = mount + aim * 0.9 + across * (s * 1.2) + Vector((0, 0, -0.2))
+        rod(parts["spar"], mount + aim * 0.9, bow_end, 0.08, 0.05, segs=6)
+        rod(parts["rope"], bow_end, mount - aim * 0.5, 0.03, segs=4, caps=False)
+    rod(parts["brass"], mount + aim * 1.6, mount + aim * 2.3, 0.05, 0.0, segs=6)
 
 
 def build_deck_details(parts, stage):
-    # Gratings over the hatches, fore and aft of the mainmast
-    for x, sx, sy in ((1.2, 2.6, 2.4), (-6.8, 2.0, 2.0), (4.8, 2.0, 2.0)):
+    # Gratings over the hatches in the waist
+    for x, sx, sy in ((-5.0, 2.4, 2.4), (9.0, 2.4, 2.4), (-9.6, 1.8, 1.8)):
         box(parts["grate"], (x, 0, DECK_Z + 0.18), (sx, sy, 0.36))
         for dx in (-1, 1):
             box(parts["hull_wood"], (x + dx * sx / 2, 0, DECK_Z + 0.22), (0.18, sy + 0.18, 0.44))
         for dy in (-1, 1):
             box(parts["hull_wood"], (x, dy * sy / 2, DECK_Z + 0.22), (sx + 0.18, 0.18, 0.44))
 
-    # The ship's boat, upside down on the gratings amidships
-    boat(parts, 1.4, 0, DECK_Z + 0.6)
+    # Two boats, keel up, side by side on the booms over the waist between the masts
+    for bx in (2.6, 6.6):
+        for y in (-3.2, 3.2):
+            rod(parts["spar"], (bx, y, DECK_Z), (bx, y, DECK_Z + 1.3), 0.12, segs=6)
+        rod(parts["spar"], (bx, -3.6, DECK_Z + 1.3), (bx, 3.6, DECK_Z + 1.3), 0.14, segs=6, uv_along=SPAR_TILE)
+    for y in (-1.5, 1.5):
+        boat(parts, 4.6, y, DECK_Z + 1.45)
 
-    # Capstan behind the mainmast
-    m = Matrix.Translation((-6.8, 0, DECK_Z + 0.36))
-    lathe(parts["hull_wood"], [(0.7, 0), (0.55, 0.3), (0.45, 1.0), (0.62, 1.15), (0.5, 1.35)], 10, m)
-    for a in angles(6):
+    # Capstan between the main and the mizzen
+    cx = -7.6
+    m = Matrix.Translation((cx, 0, DECK_Z + 0.36))
+    lathe(parts["hull_wood"], [(0.8, 0), (0.62, 0.3), (0.5, 1.0), (0.7, 1.15), (0.56, 1.4)], 10, m)
+    for a in angles(8):
         d = Vector((math.cos(a), math.sin(a), 0))
-        c = Vector((-6.8, 0, DECK_Z + 1.4))
-        rod(parts["spar"], c, c + d * 1.6, 0.06, segs=5)
+        c = Vector((cx, 0, DECK_Z + 1.45))
+        rod(parts["spar"], c, c + d * 1.8, 0.06, segs=5)
 
-    # Barrels and crates along the bulwarks
-    barrels = ((-1.5, 4.9, 0.5, 1.1), (-2.4, 5.2, 0.45, 1.0), (-1.9, -5.0, 0.5, 1.1))
+    # Barrels by the mainmast, crates on the forecastle and the quarterdeck
+    barrels = ((-2.4, 2.4, 0.5, 1.1), (-3.2, 3.2, 0.45, 1.0), (-2.6, -2.5, 0.5, 1.1), (-3.4, -3.3, 0.42, 0.95))
     for bx, by, r, h in barrels:
         barrel(parts, bx, by, DECK_Z, r, h)
-    crates = ((9.6, 3.5, DECK_Z, 1.0, 0.2), (9.4, -3.6, DECK_Z, 1.0, -0.15), (9.5, 3.5, DECK_Z + 1.0, 0.8, 0.5), (-8.3, -4.2, DECK_Z, 0.9, 0.1))
+    crates = (
+        (16.2, 3.4, FORE_Z, 1.0, 0.2), (16.0, -3.5, FORE_Z, 1.0, -0.15), (16.1, 3.4, FORE_Z + 1.0, 0.8, 0.5),
+        (-13.9, 4.6, QUARTER_Z, 0.9, 0.1), (-13.8, -4.6, QUARTER_Z, 1.0, -0.2), (-13.9, 4.6, QUARTER_Z + 0.9, 0.7, 0.4),
+    )
     for args in crates[: stage["crates"]]:
         crate(parts, *args)
 
     # Coils of rope by the masts
-    for x, y in ((8.0 - 1.3, 1.6), (-3.4 + 1.4, -1.8)):
-        m = Matrix.Translation((x, y, DECK_Z))
+    for x, y, z in ((MASTS["fore"]["x"] - 1.4, 1.8, DECK_Z), (MASTS["main"]["x"] + 1.5, -1.9, DECK_Z), (MASTS["mizzen"]["x"] + 1.4, 1.8, QUARTER_Z)):
+        m = Matrix.Translation((x, y, z))
         for k in range(3):
             r = 0.6 - k * 0.13
             lathe(parts["rope"], [(r, 0.02 + k * 0.1), (r + 0.1, 0.06 + k * 0.1), (r, 0.12 + k * 0.1)], 14, m, False, False)
 
-    # The helm on the quarterdeck: a big wheel on a gilt pedestal
-    hx = -14.0
-    box(parts["gold_paint"], (hx, 0, QUARTER_Z + 0.65), (0.45, 0.5, 1.3))
-    c = Vector((hx + 0.4, 0, QUARTER_Z + 1.6))
-    pts = [c + Vector((0, math.cos(a), math.sin(a))) * 0.9 for a in angles(16)]
-    for i in range(16):
-        rod(parts["spar"], pts[i], pts[(i + 1) % 16], 0.07, segs=5, caps=False)
-    for a in angles(8):
-        rod(parts["spar"], c, c + Vector((0, math.cos(a), math.sin(a))) * 1.2, 0.05, segs=5)
-    lathe(parts["brass"], [(0.16, -0.1), (0.16, 0.12)], 8, Matrix.Translation(c) @ basis(Vector((1, 0, 0))))
+    # The helm on the quarterdeck: a double wheel on gilt pedestals
+    hx = -19.2
+    for wx in (hx - 0.6, hx + 0.6):
+        box(parts["gold_paint"], (wx, 0, QUARTER_Z + 0.7), (0.4, 0.5, 1.4))
+        c = Vector((wx, 0, QUARTER_Z + 1.75))
+        pts = [c + Vector((0, math.cos(a), math.sin(a))) * 1.0 for a in angles(16)]
+        for i in range(16):
+            rod(parts["spar"], pts[i], pts[(i + 1) % 16], 0.07, segs=5, caps=False)
+        for a in angles(8):
+            rod(parts["spar"], c, c + Vector((0, math.cos(a), math.sin(a))) * 1.3, 0.05, segs=5)
+        lathe(parts["brass"], [(0.17, -0.1), (0.17, 0.12)], 8, Matrix.Translation(c) @ basis(Vector((1, 0, 0))))
+    rod(parts["brass"], (hx - 0.6, 0, QUARTER_Z + 1.75), (hx + 0.6, 0, QUARTER_Z + 1.75), 0.08, segs=6)
 
-    # The ship's bell on the forecastle, in a little gilt frame
-    bx = FORE_BACK + 1.0
-    for y in (-0.6, 0.6):
-        rod(parts["gold_paint"], (bx, y, FORE_Z), (bx, y, FORE_Z + 1.6), 0.07, segs=6)
-    rod(parts["gold_paint"], (bx, -0.7, FORE_Z + 1.6), (bx, 0.7, FORE_Z + 1.6), 0.08, segs=6)
-    m = Matrix.Translation((bx, 0, FORE_Z + 1.55))
-    lathe(parts["brass"], [(0.05, 0), (0.18, -0.15), (0.24, -0.5), (0.34, -0.72)], 10, m, cap_bottom=False)
+    # The ship's bell on the forecastle, in a gilt belfry
+    bx = FORE_BACK + 1.2
+    for y in (-0.75, 0.75):
+        rod(parts["gold_paint"], (bx, y, FORE_Z), (bx, y, FORE_Z + 1.9), 0.08, segs=6)
+    rod(parts["gold_paint"], (bx, -0.85, FORE_Z + 1.9), (bx, 0.85, FORE_Z + 1.9), 0.09, segs=6)
+    lathe(parts["gold_paint"], [(0.9, 0), (0.5, 0.5), (0.05, 0.8)], 8, Matrix.Translation((bx, 0, FORE_Z + 1.95)))
+    m = Matrix.Translation((bx, 0, FORE_Z + 1.85))
+    lathe(parts["brass"], [(0.05, 0), (0.2, -0.17), (0.27, -0.55), (0.38, -0.8)], 10, m, cap_bottom=False)
 
-    # A harpoon launcher on the forecastle: the game's first harpoon slot
-    hp = Vector((16.0, 0, FORE_Z))
-    lathe(parts["hull_wood"], [(0.55, 0), (0.45, 0.6), (0.3, 0.9)], 8, Matrix.Translation(hp))
-    aim = Vector((1, 0, 0.18)).normalized()
-    mount = hp + Vector((0, 0, 1.05))
-    rod(parts["iron"], mount - aim * 1.0, mount + aim * 1.6, 0.13, 0.1, segs=8)
+    # Harpoon launchers: one on the forecastle aiming ahead, two at the front of the quarterdeck aiming out
+    harpoon_launcher(parts, Vector((22.6, 0, FORE_Z)), Vector((1, 0, 0.18)))
     for s in (1, -1):
-        bow_end = mount + aim * 0.9 + Vector((0, s * 1.2, -0.2))
-        rod(parts["spar"], mount + aim * 0.9, bow_end, 0.08, 0.05, segs=6)
-        rod(parts["rope"], bow_end, mount - aim * 0.5, 0.03, segs=4, caps=False)
-    rod(parts["brass"], mount + aim * 1.6, mount + aim * 2.3, 0.05, 0.0, segs=6)
+        harpoon_launcher(parts, Vector((-14.0, s * 2.6, QUARTER_Z)), Vector((0.2, s, 0.18)))
 
     # Anchors at the bows, hanging from the catheads
     for s in (1, -1):
-        p, n = hull_point(15.0, FORE_Z - 0.6, s)
-        o = n * 0.35
-        top = p + o + Vector((0, 0, 0.6))
-        bottom = p + o + Vector((-0.3, 0, -3.0))
-        rod(parts["iron"], top, bottom, 0.12, segs=6)
-        rod(parts["spar"], top + Vector((-0.9, 0, 0)), top + Vector((0.9, 0, 0)), 0.12, segs=6)
-        for dx in (-1.1, 1.1):
-            tip = bottom + Vector((dx, 0, 1.0))
-            rod(parts["iron"], bottom, tip, 0.11, segs=6)
-            box(parts["iron"], tip, (0.5, 0.14, 0.4))
+        p, n = hull_point(20.5, FORE_Z - 0.6, s)
+        o = n * 0.4
+        top = p + o + Vector((0, 0, 0.7))
+        bottom = p + o + Vector((-0.4, 0, -3.8))
+        rod(parts["iron"], top, bottom, 0.15, segs=6)
+        rod(parts["spar"], top + Vector((-1.1, 0, 0)), top + Vector((1.1, 0, 0)), 0.15, segs=6)
+        for dx in (-1.35, 1.35):
+            tip = bottom + Vector((dx, 0, 1.25))
+            rod(parts["iron"], bottom, tip, 0.13, segs=6)
+            box(parts["iron"], tip, (0.6, 0.16, 0.5))
+        # The cathead itself, a beam out over the side
+        rod(parts["hull_wood"], p + Vector((0, 0, 0.9)) - n * 0.6, p + n * 1.2 + Vector((0, 0, 1.1)), 0.24, segs=6)
 
-    # Figurehead: a gilt scroll under the beakhead, and gilt rails along it
-    z = 6.4
-    m = Matrix.Translation((x_bow(z) - 0.2, 0, z)) @ basis(Vector((1, 0, 0.7)))
-    lathe(parts["brass"], [(0.1, -0.3), (0.45, 0.2), (0.5, 0.8), (0.32, 1.5), (0.08, 1.85)], 12, m)
+    build_head(parts)
+
+
+# The head: a knee of the head standing out from the stem, from an iron ram at the waterline up to the figurehead
+HEAD = ((-0.6, 2.4), (0.6, 3.6), (2.0, 3.9), (3.5, 3.6), (5.0, 3.5), (6.4, 4.0), (7.6, 4.8))  # (height, reach past the stem)
+HEAD_THICK = 0.56
+
+
+def head_point(z):
+    """The front edge of the knee of the head at height z"""
+    for (z0, r0), (z1, r1) in zip(HEAD, HEAD[1:]):
+        if z <= z1:
+            t = max(0.0, (z - z0) / (z1 - z0))
+            return Vector((x_bow(z) + r0 + (r1 - r0) * t, 0, z))
+    return Vector((x_bow(HEAD[-1][0]) + HEAD[-1][1], 0, HEAD[-1][0]))
+
+
+def build_head(parts):
+    """The bow made to look for a fight: a knee of the head standing out from the stem like a blade, painted royal
+    blue and gilt along its edge, an iron ram at its foot on the waterline, and a gilt figurehead at its top, crowned,
+    with swept-back wings; head rails from the catheads down to it"""
+    bm = parts["royal"]
+    front = [head_point(z) for z, _ in HEAD]
+    top_z = HEAD[-1][0] + 0.6
+    back = [Vector((x_bow(z) - 0.4, 0, z)) for z in (top_z, 6.0, 4.0, 2.0, 0.4, HEAD[0][0])]
+    outline = front + [front[-1] + Vector((-0.8, 0, 0.6))] + back
+    half = HEAD_THICK / 2
+    near = [bm.verts.new(p + Vector((0, half, 0))) for p in outline]
+    far = [bm.verts.new(p - Vector((0, half, 0))) for p in outline]
+    bm.faces.new(near)
+    bm.faces.new(list(reversed(far)))
+    for i in range(len(outline)):
+        j = (i + 1) % len(outline)
+        bm.faces.new((near[j], near[i], far[i], far[j]))
+    # Gilt along the front edge
+    for a, b in zip(front, front[1:]):
+        rod(parts["gold_paint"], a + Vector((0.08, 0, 0)), b + Vector((0.08, 0, 0)), 0.2, segs=6)
+
+    # The ram: an iron spike just over the waterline, pointing ahead from the knee's foot, with two gilt collars
+    base = head_point(0.9)
+    aim = Vector((1, 0, 0.05)).normalized()
+    m = Matrix.Translation(base - aim * 1.0) @ basis(aim)
+    lathe(parts["iron"], [(0.8, 0), (0.9, 0.8), (0.75, 2.2), (0.45, 3.6), (0.05, 4.8)], 12, m)
+    for at in (0.45, 1.5):
+        lathe(parts["brass"], [(0.94, at - 0.15), (0.99, at), (0.92, at + 0.15)], 12, m, False, False)
+
+    # The figurehead: a gilt beast leaning out over the ram, its chest forward, a crown on its head and wings swept
+    # back along the head rails
+    tip = head_point(HEAD[-1][0])
+    lean = Vector((1, 0, 0.75)).normalized()
+    m = Matrix.Translation(tip + Vector((-0.4, 0, -0.2))) @ basis(lean)
+    lathe(parts["brass"], [(0.3, -0.4), (0.85, 0.2), (0.95, 1.0), (0.75, 1.8), (0.5, 2.4), (0.62, 2.8), (0.35, 3.3), (0.08, 3.6)], 12, m)
+    crown = tip + lean * 3.1 + Vector((-0.4, 0, 0.1))
+    lathe(parts["brass"], [(0.42, 0), (0.5, 0.35), (0.24, 0.6), (0.05, 0.9)], 8, Matrix.Translation(crown))
     for s in (1, -1):
-        rod(parts["gold_paint"], (x_bow(4.0) - 0.4, s * 0.35, 4.0), (x_bow(8.6) - 0.6, s * 0.8, 8.6), 0.1, segs=6)
+        root = tip + lean * 1.4 + Vector((-0.4, s * 0.5, 0))
+        for k, (back, rise, width) in enumerate(((2.8, 1.3, 0.5), (2.4, 0.4, 0.42), (1.9, -0.4, 0.34))):
+            end = root + Vector((-back, s * (1.2 + 0.25 * k), rise))
+            rod(parts["brass"], root, end, width, 0.05, segs=5)
+
+    # Head rails: from the catheads sweeping down and forward to the figurehead, two a side
+    for s in (1, -1):
+        for start_z, end, r in ((FORE_Z - 0.4, tip + Vector((-0.6, s * 0.35, 0.6)), 0.13), (FORE_Z - 2.0, tip + Vector((-1.6, s * 0.3, -1.2)), 0.11)):
+            p, n = hull_point(x_bow(start_z) - 3.0, start_z, s)
+            a = p + n * 0.1
+            mid = a.lerp(end, 0.5) + Vector((0, s * 0.5, -0.6))
+            rod(parts["gold_paint"], a, mid, r, segs=6)
+            rod(parts["gold_paint"], mid, end, r, segs=6)
 
 
 def boat(parts, x, y, z):
@@ -1278,49 +1417,56 @@ def splinters(parts, x, z, r):
 
 
 def build_mast(parts, upper, name, stage):
-    """upper: where the foremast's part above FORE_BREAK_Z goes. In stage 4 it is a separate set of parts that build()
-    topples over the bow, and the main topmast is gone overboard; otherwise `upper` is `parts` itself"""
+    """A mast in three pieces (the lower mast up to the top, the topmast up to the cross-trees, the topgallant mast up
+    to the truck), its square sails between their yards and a pennant at the masthead. upper: where the foremast's part
+    above FORE_BREAK_Z goes. In stage 4 it is a separate set of parts that build() topples over the bow, and the main
+    topmast is gone overboard; otherwise `upper` is `parts` itself"""
     spec = MASTS[name]
-    mx, top = spec["x"], spec["top"]
-    (c_lo, c_hi, _, _), (t_lo, t_hi, _, _) = spec["sails"]
+    mx, top, top_z, cross_z = spec["x"], spec["top"], spec["top_z"], spec["cross_z"]
     mt = Matrix.Translation((mx, 0, 0))
-    top_z = c_hi + 1.2  # the top: the platform where the lower mast meets the topmast
+    big = name != "mizzen"
+    r0 = 0.64 if big else 0.5
     fore_down = stage["mast_broken"] and name == "fore"
     topmast_lost = stage["mast_broken"] and name == "main"
     up = upper if fore_down else parts
-    # Lower mast, and the topmast above the top, thinner
+    # Lower mast, and above the top the topmast and the topgallant mast, each thinner
     if fore_down:
-        rb = 0.52 - 0.1 * (FORE_BREAK_Z - DECK_Z) / (top_z + 0.6 - DECK_Z)
-        lathe(parts["spar"], [(0.55, DECK_Z - 0.5), (0.52, DECK_Z), (rb, FORE_BREAK_Z - 0.3), (rb * 0.6, FORE_BREAK_Z + 0.2), (0.05, FORE_BREAK_Z + 0.5)], 12, mt, uv_along=SPAR_TILE)
+        rb = r0 - 0.1 * (FORE_BREAK_Z - DECK_Z) / (top_z + 0.6 - DECK_Z)
+        lathe(parts["spar"], [(r0, DECK_Z - 0.5), (r0 - 0.03, DECK_Z), (rb, FORE_BREAK_Z - 0.3), (rb * 0.6, FORE_BREAK_Z + 0.2), (0.05, FORE_BREAK_Z + 0.5)], 12, mt, uv_along=SPAR_TILE)
         splinters(parts, mx, FORE_BREAK_Z, rb)
-        lathe(up["spar"], [(rb, FORE_BREAK_Z + 0.4), (0.42, top_z + 0.6), (0.3, top_z + 0.6)], 12, mt, uv_along=SPAR_TILE)
+        lathe(up["spar"], [(rb, FORE_BREAK_Z + 0.4), (r0 - 0.12, top_z + 0.6), (r0 - 0.25, top_z + 0.6)], 12, mt, uv_along=SPAR_TILE)
     else:
-        lathe(parts["spar"], [(0.55, DECK_Z - 0.5), (0.52, DECK_Z), (0.42, top_z + 0.6), (0.3, top_z + 0.6)], 12, mt, uv_along=SPAR_TILE)
+        lathe(parts["spar"], [(r0, DECK_Z - 0.5), (r0 - 0.03, DECK_Z), (r0 - 0.12, top_z + 0.6), (r0 - 0.25, top_z + 0.6)], 12, mt, uv_along=SPAR_TILE)
+    r1 = r0 * 0.62
     if topmast_lost:
-        lathe(parts["spar"], [(0.32, top_z - 1.2), (0.28, top_z + 0.6), (0.26, MAIN_BREAK_Z - 0.3), (0.16, MAIN_BREAK_Z + 0.2), (0.04, MAIN_BREAK_Z + 0.5)], 10, mt, uv_along=SPAR_TILE)
-        splinters(parts, mx, MAIN_BREAK_Z, 0.26)
+        lathe(parts["spar"], [(r1, top_z - 1.2), (r1 - 0.03, top_z + 0.6), (r1 - 0.05, MAIN_BREAK_Z - 0.3), (r1 * 0.5, MAIN_BREAK_Z + 0.2), (0.04, MAIN_BREAK_Z + 0.5)], 10, mt, uv_along=SPAR_TILE)
+        splinters(parts, mx, MAIN_BREAK_Z, r1 - 0.05)
     else:
-        lathe(up["spar"], [(0.32, top_z - 1.2), (0.28, top_z + 0.6), (0.2, top), (0.24, top + 0.15), (0.05, top + 0.4)], 10, mt, uv_along=SPAR_TILE)
+        lathe(up["spar"], [(r1, top_z - 1.2), (r1 - 0.04, cross_z + 0.6), (r1 * 0.55, cross_z + 0.6)], 10, mt, uv_along=SPAR_TILE)
+        lathe(up["spar"], [(r1 * 0.62, cross_z - 1.0), (r1 * 0.5, top), (r1 * 0.62, top + 0.15), (0.05, top + 0.4)], 8, mt, uv_along=SPAR_TILE)
     for z in (DECK_Z + 1.4, DECK_Z + 6.5, top_z - 3.0):
-        lathe((up if fore_down and z > FORE_BREAK_Z else parts)["iron"], [(0.52, z - 0.08), (0.52, z + 0.08)], 12, mt, False, False)
+        if z > top_z - 1.5 or (name == "mizzen" and z < QUARTER_Z + 0.5):
+            continue
+        lathe((up if fore_down and z > FORE_BREAK_Z else parts)["iron"], [(r0 - 0.04, z - 0.08), (r0 - 0.04, z + 0.08)], 12, mt, False, False)
 
     # The top: a half-round platform with a gilt rim, and the cross-trees higher up
-    R = 2.0
+    R = 2.5 if big else 1.9
     lathe(up["deck"], [(0.3, top_z - 0.2), (R, top_z - 0.2), (R, top_z + 0.12), (0.3, top_z + 0.12)], 18, mt)
-    lathe(up["gold_paint"], [(R - 0.05, top_z + 0.12), (R + 0.06, top_z + 0.12), (R + 0.06, top_z + 0.3), (R - 0.05, top_z + 0.3)], 18, mt, False, False)
+    lathe(up["gold_paint"], [(R - 0.05, top_z + 0.12), (R + 0.06, top_z + 0.12), (R + 0.06, top_z + 0.32), (R - 0.05, top_z + 0.32)], 18, mt, False, False)
     for a in angles(8):
         d = Vector((math.cos(a), math.sin(a), 0))
-        rod(up["spar"], Vector((mx, 0, top_z - 2.0)) + d * 0.4, Vector((mx, 0, top_z - 0.2)) + d * (R - 0.3), 0.07, segs=5)
+        rod(up["spar"], Vector((mx, 0, top_z - 2.2)) + d * 0.45, Vector((mx, 0, top_z - 0.2)) + d * (R - 0.3), 0.07, segs=5)
     if not topmast_lost:
-        cross = t_hi + 1.0
-        rod(up["spar"], (mx, -1.4, cross), (mx, 1.4, cross), 0.1, segs=6)
+        rod(up["spar"], (mx, -1.6, cross_z), (mx, 1.6, cross_z), 0.11, segs=6)
+        rod(up["spar"], (mx - 0.6, -1.2, cross_z), (mx - 0.6, 1.2, cross_z), 0.09, segs=6)
 
-    # The sails: a course over the deck and a topsail above it, each between its yards
+    # The square sails, each between its yards: the main's course with the crest, a course or a topsail elsewhere
     for k, (lo, hi, half_lo, half_hi) in enumerate(spec["sails"]):
-        if topmast_lost and k == 1:
+        if topmast_lost and k >= 1:
             continue
-        belly = SAIL_BELLY * (1.0 if k == 0 else 0.8)
-        key = "topsail" if k == 1 else "crest_sail" if name == "main" else "sail"
+        level = k if big else k + 1  # the mizzen's first square sail is a topsail: the spanker is under it
+        belly = SAIL_BELLY * (1.0, 0.8, 0.62)[level]
+        key = ("crest_sail" if name == "main" else "sail") if level == 0 else "topsail"
 
         def point(u, v, lo=lo, hi=hi, half_lo=half_lo, half_hi=half_hi, belly=belly):
             s = u * 2 - 1
@@ -1332,123 +1478,176 @@ def build_mast(parts, upper, name, stage):
             return braced(mx, along, -s * hw, z)
 
         grid_surface(up[key], point, 28, 18)
-        for z, hw, r in ((hi + 0.25, half_hi + 0.9, 0.22), (lo - 0.2, half_lo + 0.6, 0.2)):
+        for z, hw, r in ((hi + 0.25, half_hi + 0.9, 0.24 - 0.04 * level), (lo - 0.2, half_lo + 0.6, 0.22 - 0.04 * level)):
             mid = braced(mx, 0, 0, z)
             for end in (braced(mx, 0, hw, z), braced(mx, 0, -hw, z)):
                 rod(up["spar"], mid, end, r, r * 0.5, segs=8, uv_along=SPAR_TILE)
 
-    # A long pennant streaming from the masthead: blue on the main, white on the fore; damage shreds it, fire burns it
+    # A long pennant streaming from the masthead: blue on the main, white on the fore and the mizzen; damage shreds
+    # it, fire burns it
     if topmast_lost:
         return
-    pole_top = top + 2.6
+    pole_top = top + 2.8
     rod(up["spar"], (mx, 0, top), (mx, 0, pole_top), 0.08, segs=6)
-    key, length, left = ("pennant_blue", 7.5, stage["pennants"][0]) if name == "main" else ("pennant_white", 5.0, stage["pennants"][1])
+    key, length, left = {
+        "main": ("pennant_blue", 9.5, stage["pennants"][0]),
+        "fore": ("pennant_white", 6.5, stage["pennants"][1]),
+        "mizzen": ("pennant_white", 5.0, stage["pennants"][2]),
+    }[name]
     if left > 0:
         length *= left
 
         def pennant(u, v, length=length):
-            half = 0.55 * (1 - u) + 0.08
+            half = 0.6 * (1 - u) + 0.08
             fork = 0.35 * max(0.0, u - 0.8) / 0.2  # a swallowtail at the end
-            z = pole_top - 0.55 + (v * 2 - 1) * half * (1 - fork * (1 - abs(v * 2 - 1)))
-            return Vector((mx - 0.1 - length * u, 0.5 * math.sin(u * 4.0) * u, z))
+            z = pole_top - 0.6 + (v * 2 - 1) * half * (1 - fork * (1 - abs(v * 2 - 1)))
+            return Vector((mx - 0.1 - length * u, 0.55 * math.sin(u * 4.0) * u, z))
 
         grid_surface(up[key], pennant, 14, 2)
+
+
+def spanker_corners():
+    """The spanker's corners: tack and throat on the mizzen, clew at the boom's end, peak at the gaff's, swung a little
+    to starboard like the headsails"""
+    mx = MASTS["mizzen"]["x"]
+    sp = SPANKER
+    swing = Vector((-math.cos(0.18), -math.sin(0.18), 0))
+    tack = Vector((mx - 0.7, 0, sp["foot"]))
+    throat = Vector((mx - 0.7, 0, sp["head"]))
+    clew = tack + swing * sp["boom"] + Vector((0, 0, 0.3))
+    peak = throat + swing * sp["gaff"] + Vector((0, 0, sp["peak"]))
+    return tack, throat, clew, peak
+
+
+def build_spanker(parts, stage):
+    """The mizzen's spanker: a fore-and-aft sail on a boom and a gaff"""
+    tack, throat, clew, peak = spanker_corners()
+
+    def point(u, v):
+        foot = tack.lerp(clew, u)
+        head = throat.lerp(peak, u)
+        return foot.lerp(head, v) + Vector((0, -1.1, 0)) * math.sin(math.pi * u) ** 0.9 * math.sin(math.pi * v) ** 0.8
+
+    grid_surface(parts["sail"], point, 16, 14)
+    rod(parts["spar"], tack, clew + (clew - tack).normalized() * 0.9, 0.22, 0.15, segs=8, uv_along=SPAR_TILE)
+    rod(parts["spar"], throat, peak + (peak - throat).normalized() * 0.5, 0.18, 0.12, segs=8, uv_along=SPAR_TILE)
+    # The vang from the peak down to the quarter, and the sheet from the boom's end
+    rod(parts["rope"], peak, Vector((x_stern(12) + 0.4, -3.0, rail_z(-25))), 0.04, segs=4, caps=False)
+    rod(parts["rope"], clew, Vector((x_stern(12) + 0.6, -0.4, rail_z(-25.5))), 0.05, segs=4, caps=False)
 
 
 def mast_point(name, z):
     return Vector((MASTS[name]["x"], 0, z))
 
 
-# Ropes shot away, in order: (kind, mast, side, which)
-ROPE_LOSS_ORDER = (
-    ("backstay", "fore", -1, 0), ("brace", "main", 1, 1), ("backstay", "main", 1, 0), ("brace", "fore", -1, 0),
-    ("topshroud", "main", -1, 0), ("brace", "main", -1, 0), ("backstay", "main", -1, 0), ("topshroud", "fore", 1, 1),
-    ("brace", "fore", 1, 1), ("backstay", "fore", 1, 0), ("brace", "main", 1, 0), ("brace", "fore", -1, 1),
-)
+# Every rope damage can part, as (kind, mast, side, which), in the order they are shot away
+ROPES = [
+    (kind, name, side, k)
+    for name in MASTS
+    for side in (1, -1)
+    for kind, count in (("brace", len(MASTS[name]["sails"])), ("backstay", 1), ("topshroud", 2))
+    for k in range(count)
+]
+ROPE_LOSS_ORDER = tuple(ROPES[i] for i in loss_order(len(ROPES), 6))
+SHROUDS = {"fore": (-0.4, -1.5, -2.6, -3.7), "main": (-0.4, -1.5, -2.6, -3.7), "mizzen": (-0.4, -1.4, -2.4)}
 
 
 def build_rigging(parts, stage):
-    """Bowsprit, stays, the jib, shrouds, backstays and braces. In stage 4 the foremast's rigging went down with it and
-    the main's topmast took its own; damage parts ropes before that (ROPE_LOSS_ORDER)"""
+    """Bowsprit, stays, two headsails, shrouds, backstays and braces. In stage 4 the foremast's rigging went down with
+    it and the main's topmast took its own; damage parts ropes before that (ROPE_LOSS_ORDER)"""
     rope = parts["rope"]
     fore_down = stage["mast_broken"]
     topmast_lost = stage["mast_broken"]
     skipped = set(ROPE_LOSS_ORDER[: stage["ropes_lost"]])
     # Bowsprit and jib-boom
-    root = Vector((x_bow(FORE_Z) - 2.6, 0, FORE_Z + 0.4))
-    rod(parts["spar"], root, BOWSPRIT_TIP.lerp(root, 0.32), 0.42, 0.3, segs=10, uv_along=SPAR_TILE)
-    rod(parts["spar"], BOWSPRIT_TIP.lerp(root, 0.45), BOWSPRIT_TIP, 0.24, 0.14, segs=8, uv_along=SPAR_TILE)
-    rod(rope, BOWSPRIT_TIP.lerp(root, 0.3), (x_bow(1.5) - 0.2, 0, 1.5), 0.06, segs=4, caps=False)  # bobstay
+    root = Vector((x_bow(FORE_Z) - 3.2, 0, FORE_Z + 0.5))
+    rod(parts["spar"], root, BOWSPRIT_TIP.lerp(root, 0.36), 0.52, 0.36, segs=10, uv_along=SPAR_TILE)
+    rod(parts["spar"], BOWSPRIT_TIP.lerp(root, 0.48), BOWSPRIT_TIP, 0.28, 0.15, segs=8, uv_along=SPAR_TILE)
+    rod(rope, BOWSPRIT_TIP.lerp(root, 0.34), head_point(3.0) - Vector((0.3, 0, 0)), 0.07, segs=4, caps=False)  # bobstay
+    rod(rope, BOWSPRIT_TIP, head_point(5.0) - Vector((0.3, 0, 0)), 0.05, segs=4, caps=False)  # martingale
+    for s in (1, -1):
+        p, n = hull_point(x_bow(FORE_Z) - 4.0, FORE_Z - 0.4, s)
+        rod(rope, BOWSPRIT_TIP.lerp(root, 0.4), p + n * 0.2, 0.05, segs=4, caps=False)  # bowsprit shrouds
 
-    fore, main = MASTS["fore"], MASTS["main"]
-    fore_top = mast_point("fore", fore["top"] - 0.5)
-    main_top = mast_point("main", main["top"] - 0.5)
-    # Stays: from the masts forward and down
+    fore, main, mizzen = MASTS["fore"], MASTS["main"], MASTS["mizzen"]
+    # Stays: from each mast forward and down
     if not fore_down:
-        rod(rope, fore_top, BOWSPRIT_TIP, 0.06, segs=4, caps=False)
-        rod(rope, mast_point("fore", fore["sails"][0][1] + 1.0), BOWSPRIT_TIP.lerp(root, 0.4), 0.07, segs=4, caps=False)
+        rod(rope, mast_point("fore", fore["top"] - 0.5), BOWSPRIT_TIP, 0.06, segs=4, caps=False)
+        rod(rope, mast_point("fore", fore["cross_z"] + 0.3), BOWSPRIT_TIP.lerp(root, 0.3), 0.065, segs=4, caps=False)
+        rod(rope, mast_point("fore", fore["top_z"] + 0.6), BOWSPRIT_TIP.lerp(root, 0.62), 0.08, segs=4, caps=False)
     if not topmast_lost:
-        rod(rope, main_top, mast_point("fore", fore["sails"][0][1] + 1.6), 0.06, segs=4, caps=False)
-    rod(rope, mast_point("main", main["sails"][0][1] + 1.0), Vector((FORE_BACK, 0, FORE_Z + 0.4)), 0.07, segs=4, caps=False)
+        rod(rope, mast_point("main", main["top"] - 0.5), mast_point("fore", fore["cross_z"] + 0.5), 0.06, segs=4, caps=False)
+        rod(rope, mast_point("main", main["cross_z"] + 0.3), mast_point("fore", fore["top_z"] + 0.8), 0.065, segs=4, caps=False)
+    rod(rope, mast_point("main", main["top_z"] + 0.6), Vector((FORE_BACK + 0.6, 0, FORE_Z + 0.4)), 0.08, segs=4, caps=False)
+    rod(rope, mast_point("mizzen", mizzen["cross_z"] + 0.3), mast_point("main", main["top_z"] + 1.0), 0.055, segs=4, caps=False)
+    rod(rope, mast_point("mizzen", mizzen["top_z"] + 0.6), mast_point("main", DECK_Z + 4.0), 0.065, segs=4, caps=False)
 
     if not fore_down:
-        # The jib: a triangle from the fore-topmast stay's upper part down to the bowsprit
-        head = fore_top.lerp(BOWSPRIT_TIP, 0.38)
-        tack = fore_top.lerp(BOWSPRIT_TIP, 0.95)
-        clew = Vector((x_bow(FORE_Z) + 3.0, -1.2, FORE_Z + 4.6))
+        # The headsails: triangles from the fore stays down to the bowsprit, bellying out to leeward
+        for stay_top, stay_foot, lo, hi, clew, belly in (
+            (fore["top"] - 0.5, BOWSPRIT_TIP, 0.36, 0.95, Vector((x_bow(FORE_Z) + 3.8, -1.4, FORE_Z + 5.4)), 0.8),
+            (fore["cross_z"] + 0.3, BOWSPRIT_TIP.lerp(root, 0.3), 0.3, 0.93, Vector((x_bow(FORE_Z) + 0.6, -1.8, FORE_Z + 4.2)), 0.9),
+        ):
+            top_point = mast_point("fore", stay_top)
+            head = top_point.lerp(stay_foot, lo)
+            tack = top_point.lerp(stay_foot, hi)
 
-        def jib(u, v):
-            # Along the stay (u), out to the clew (v): the cloth bellies out to leeward between them
-            edge = head.lerp(tack, u)
-            bulge = Vector((0, -0.7, 0)) * math.sin(math.pi * u) * math.sin(math.pi * v)
-            return edge.lerp(clew, v) + bulge
+            def jib(u, v, head=head, tack=tack, clew=clew, belly=belly):
+                # Along the stay (u), out to the clew (v): the cloth bellies out to leeward between them
+                edge = head.lerp(tack, u)
+                bulge = Vector((0, -belly, 0)) * math.sin(math.pi * u) * math.sin(math.pi * v)
+                return edge.lerp(clew, v) + bulge
 
-        grid_surface(parts["sail"], jib, 10, 6)
+            grid_surface(parts["sail"], jib, 10, 6)
 
-    for name in ("fore", "main"):
-        spec = MASTS[name]
-        mx = spec["x"]
-        top_z = spec["sails"][0][1] + 1.2
-        gone = fore_down if name == "fore" else False
+    for name, spec in MASTS.items():
+        mx, top_z, cross_z = spec["x"], spec["top_z"], spec["cross_z"]
+        gone = fore_down and name == "fore"
         top_gone = gone or (topmast_lost and name == "main")
+        R = 2.5 if name != "mizzen" else 1.9
         for side in (1, -1):
-            if not gone:
-                # Shrouds from the top down to the channels on the side, slightly aft of the mast
-                for dx in (-0.5, -1.7, -2.9):
-                    x = mx + dx
-                    p, n = hull_point(x, rail_z(x) - 0.4, side)
-                    rod(rope, Vector((mx, side * 0.35, top_z - 0.3)), p + n * 0.4, 0.05, segs=4, caps=False)
-            for dx in (-0.5, -1.7, -2.9):
+            for dx in SHROUDS[name]:
                 x = mx + dx
                 p, n = hull_point(x, rail_z(x) - 0.4, side)
-                box(parts["iron"], p + n * 0.35, (0.2, 0.14, 0.55))
+                if not gone:
+                    # Shrouds from the top down to the channels on the side, slightly aft of the mast
+                    rod(rope, Vector((mx, side * 0.4, top_z - 0.3)), p + n * 0.45, 0.055, segs=4, caps=False)
+                box(parts["iron"], p + n * 0.4, (0.2, 0.14, 0.6))
+            if not gone:
+                # Ratlines across the shrouds, a few of them, so they read as a ladder
+                first, last = SHROUDS[name][0], SHROUDS[name][-1]
+                pa, na = hull_point(mx + first, rail_z(mx + first) - 0.4, side)
+                pb, nb = hull_point(mx + last, rail_z(mx + last) - 0.4, side)
+                a0, b0 = pa + na * 0.45, pb + nb * 0.45
+                a1 = Vector((mx, side * 0.4, top_z - 0.3))
+                for t in (0.15, 0.3, 0.45, 0.6, 0.75):
+                    rod(rope, a0.lerp(a1, t), b0.lerp(a1, t), 0.03, segs=3, caps=False)
             if not top_gone:
                 # Topmast shrouds from the cross-trees to the rim of the top
-                for j, dx in enumerate((-0.4, -1.2)):
+                for j, dx in enumerate((-0.4, -1.3)):
                     if ("topshroud", name, side, j) in skipped:
                         continue
-                    a = Vector((mx, side * 0.3, spec["sails"][1][1] + 1.0))
-                    b = Vector((mx + dx, side * 1.9, top_z))
-                    rod(rope, a, b, 0.04, segs=4, caps=False)
+                    rod(rope, Vector((mx, side * 0.3, cross_z)), Vector((mx + dx, side * (R - 0.1), top_z)), 0.045, segs=4, caps=False)
                 # A backstay from the masthead down to the side aft
                 if ("backstay", name, side, 0) not in skipped:
-                    x = mx - 9.0
+                    x = mx - 10.0
                     p, n = hull_point(x, rail_z(x) - 0.3, side)
-                    rod(rope, Vector((mx, side * 0.25, spec["top"] - 1.0)), p + n * 0.3, 0.045, segs=4, caps=False)
+                    rod(rope, Vector((mx, side * 0.25, spec["top"] - 1.0)), p + n * 0.35, 0.05, segs=4, caps=False)
             # Braces from the yard ends aft to the rail
             for k, (lo, hi, half_lo, half_hi) in enumerate(spec["sails"]):
-                if gone or (top_gone and k == 1) or ("brace", name, side, k) in skipped:
+                if gone or (top_gone and k >= 1) or ("brace", name, side, k) in skipped:
                     continue
                 end = braced(mx, 0, side * (half_hi + 0.9), hi + 0.25)
-                x = mx - 6.5
+                x = max(mx - 6.5, -23.0)
                 p, n = hull_point(x, rail_z(x), side)
                 rod(rope, end, p, 0.045, segs=4, caps=False)
         # The channels: boards along the side that spread the shrouds
         for side in (1, -1):
-            x = mx - 1.7
-            p, n = hull_point(x, rail_z(x) - 0.45, side)
+            dxs = SHROUDS[name]
+            x = mx + (dxs[0] + dxs[-1]) / 2
+            p, n = hull_point(x, rail_z(x) - 0.5, side)
             t, n2, b = side_frame(n)
-            box(parts["hull_wood"], p + n2 * 0.35, (4.2, 0.7, 0.16), (t, n2, b))
+            box(parts["hull_wood"], p + n2 * 0.4, (abs(dxs[-1] - dxs[0]) + 1.4, 0.8, 0.18), (t, n2, b))
 
 
 def build_damage(parts, stage, rng):
@@ -1484,7 +1683,7 @@ def build_damage(parts, stage, rng):
 
     for i in range(stage["debris"]):
         a = rng.random() * 2 * math.pi
-        dist = 12 + 7 * rng.random()
+        dist = 15 + 8 * rng.random()
         c = Vector((math.cos(a) * dist * 1.5, math.sin(a) * dist, 0.06))
         rot = rng.random() * math.pi
         axes = (Vector((math.cos(rot), math.sin(rot), 0)), Vector((-math.sin(rot), math.cos(rot), 0)), Vector((0, 0, 1)))
@@ -1534,7 +1733,6 @@ OBJECT_NAMES = {
     "topsail": "Topsails",
     "crest_sail": "CrestSail",
     "burnt": "Scorch",
-    "flag": "Ensign",
     "pennant_blue": "PennantBlue",
     "pennant_white": "PennantWhite",
     "grate": "Hatches",
@@ -1597,8 +1795,9 @@ def build(damage=None):
     build_cannons(parts, stage)
     build_stern(parts, stage)
     build_deck_details(parts, stage)
-    build_mast(parts, upper, "fore", stage)
-    build_mast(parts, upper, "main", stage)
+    for name in MASTS:
+        build_mast(parts, upper, name, stage)
+    build_spanker(parts, stage)
     build_rigging(parts, stage)
     build_damage(parts, stage, np.random.default_rng(11))
     if upper is not parts:

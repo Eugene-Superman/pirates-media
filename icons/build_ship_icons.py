@@ -1,6 +1,7 @@
 """
-The ships' icons, for the shipyard's cards and a ship's info window: painted ships cut out of their pictures
-(icons/source/ship_<id>.webp, one ship each, on a dark background) and packed into one picture.
+The ships' icons, for the shipyard's cards and a ship's info window: painted ships (or a render of a ship's model)
+cut out of their pictures (icons/source/ship_<id>.webp, one ship each, on a dark background) and packed into one
+picture.
 
 Run it with Blender's own Python, like the other scripts here:
     blender --background --python icons/build_ship_icons.py
@@ -42,6 +43,7 @@ OUT_DIR = os.path.normpath(os.path.join(ASSETS_DIR, "..", "canvas", "public", "s
 SHEETS = {
     "ship_sloop.webp": {"sloop": (187, 22, 1353, 934)},
     "ship_coastalBark.webp": {"coastalBark": (28, 13, 1435, 974)},
+    "ship_corsair.webp": {"corsair": (310, 70, 1210, 870)},
 }
 TILE = 256  # pixels a side of an icon: the info window shows it 236 wide
 PAD = 6  # pixels round a ship inside its tile
